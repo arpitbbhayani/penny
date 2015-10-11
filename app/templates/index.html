@@ -1,0 +1,31 @@
+{% extends "boilerplate.html" %}
+
+{% block content %}
+    <div class="animated slideInRight">
+        <span class="clock"></span>
+    </div>
+    <div class="ui text menu segment animated fadeInUp">
+    </div>
+    <div id="main-content" class="ui one column stackable center aligned page grid animated fadeIn">
+        <div class="column twelve wide">
+            <div class="ui small image">
+                <img src="/static/images/logo.png">
+            </div>
+            <div class="ui divider horizontal"></div>
+            <div class="ui row">
+                <form id="wish-form">
+                    <div class="ui input large fluid">
+                        <input id="wish" name = "wish" type="text" placeholder="I am Jesse, Can I help you with something?">
+                    </div>
+                    <input type="submit" style="display: none;">
+                </form>
+            </div>
+            <p id="reply"></p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block head %}
+<script src="/static/js/index.js"></script>
+<script src="/static/js/clock.js"></script>
+{% endblock %}
