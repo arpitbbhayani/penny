@@ -29,7 +29,7 @@ Before installing `Jesse` make sure your `MongoDB` server is up and running.
 
 The procedure of installing `Jesse` is pretty simple. Just follow the steps below.
 ```
-$ git clone https://github.com/frictionle/jesse.git
+$ git clone https://github.com/arpitbbhayani/jesse.git
 $ cd jesse
 $ ./install.sh
 ```
@@ -50,14 +50,14 @@ Anyone with basic knowledge of [jQuery](https://jquery.com/) and [Python](https:
 
 Contributing to `Jesse` is simple. You can
 
-1. Fix an existing bug. Browse through the complete list [here](https://github.com/frictionle/jesse/issues).
-2. Have a feature idea? [share](https://github.com/frictionle/jesse/issues/new) it with us.
+1. Fix an existing bug. Browse through the complete list [here](https://github.com/arpitbbhayani/jesse/issues).
+2. Have a feature idea? [share](https://github.com/arpitbbhayani/jesse/issues/new) it with us.
 
-There is a crisp documentation written on [How to contribute](https://github.com/frictionle/jesse/wiki/How-to-contribute); you can follow that and get started :smile:
+There is a crisp documentation written on [How to contribute](https://github.com/arpitbbhayani/jesse/wiki/How-to-contribute); you can follow that and get started :smile:
 
 ## Issues
 
-Have a bug or a feature request? You can find our existing and closed issues [here](https://github.com/frictionle/jesse/issues). If your problem or idea is not addressed yet, [please open a new issue](https://github.com/frictionle/jesse/issues/new).
+Have a bug or a feature request? You can find our existing and closed issues [here](https://github.com/arpitbbhayani/jesse/issues). If your problem or idea is not addressed yet, [please open a new issue](https://github.com/arpitbbhayani/jesse/issues/new).
 
 ## Contributors
 
@@ -71,4 +71,4 @@ This is our own "Hall Of Fame" and these are some of the most awesome people who
 **Arpit Bhayani**
 
 ## Copyright and license
-Code copyright 2015 Arpit Bhayani. Code released under [the MIT license](https://github.com/frictionle/jesse/blob/master/LICENSE).
+Code copyright 2015 Arpit Bhayani. Code released under [the MIT license](https://github.com/arpitbbhayani/jesse/blob/master/LICENSE).
