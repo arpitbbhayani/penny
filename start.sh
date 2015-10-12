@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source jes/bin/activate
+source penenv/bin/activate
 
 #
 # Execution Phase

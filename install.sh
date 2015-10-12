@@ -6,12 +6,12 @@
 
 echo "[SHELL] Setting up the execution environment"
 
-if [ ! -d ./jes ]; then
+if [ ! -d ./penenv ]; then
     echo "[SHELL] Setting up new virtual environment"
-    virtualenv --clear jes
+    virtualenv --clear penenv
 fi
 
-source jes/bin/activate
+source penenv/bin/activate
 
 echo "[SHELL] Installing required python packages"
 pip install -r requirements.txt
