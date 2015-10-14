@@ -11,7 +11,7 @@ integer     [0-9]+
 
 %%
 
-\"[^"]*\"                                           {yylval.str = strdup(yytext); return MESSAGE;}
+\"[^"]*\"                                           {yytext[strlen(yytext)-1] = 0; yytext++; yylval.str = strdup(yytext); return MESSAGE;}
 on|at|in                                            {yylval.str = strdup(yytext); return PREPOSITION;}
 {integer}([:.]{integer})?{ws}?([aApP][mM])?         {yylval.str = strdup(yytext); return TIME;}
 [a-zA-Z][a-zA-Z0-9]*                                {yylval.str = strdup(yytext); return WORD;}

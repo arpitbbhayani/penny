@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 from flask import render_template, request, redirect
-from flask import url_for, make_response
+from flask import url_for, make_response, jsonify
 
 from ..items.remind import remind
 
@@ -15,4 +15,4 @@ def wishapi():
     command = wish[:index]
     wish = wish[index+1:]
 
-    return remind.fetch(wish)
+    return jsonify(response = remind.fetch(wish))

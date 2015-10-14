@@ -22,8 +22,10 @@
 
 wish:
         message preposition time            {
-                                                printf("MESSAGE:%s\n", $1);
-                                                printf("TIME:%s\n", $3);
+                                                printf("{");
+                                                printf("\"message\":\"%s\",", $1);
+                                                printf("\"time\":\"%s\"", $3);
+                                                printf("}");
                                             }
 
 message:
