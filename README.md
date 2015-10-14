@@ -22,6 +22,7 @@ Before installing Penny, you should have the following on your machine
 1. `pip`
 2. `virtualenv`
 3. `mongodb`
+4. `lex` and `yacc`
 
 For download and installation of MongoDB please follow the official [documentation](https://www.mongodb.org/downloads)
 
