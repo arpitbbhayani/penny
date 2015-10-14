@@ -2,3 +2,7 @@
 *.DS_Store
 *node_modules/
 penenv
+*.o
+*lex.yy.c
+*.tab.*
+*.output
