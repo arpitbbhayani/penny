@@ -5,34 +5,38 @@
     void yyerror(char *);
 %}
 
-%token ON AT COLON
 
 %union
 {
-        int num;
         char *str;
 }
 
+%token <str> PREPOSITION
 %token <str> MESSAGE
 %token <str> WORD
-%token <num> NUMBER
+%token <str> TIME
 
-%type<num> time
-%type<str> wish message
+%type<str> wish message preposition time
 
 %%
 
 wish:
-        message AT time     {printf("MESSAGE\t%s\nTIME\t%d", $1, $3);}
+        message preposition time            {
+                                                printf("MESSAGE:%s\n", $1);
+                                                printf("TIME:%s\n", $3);
+                                            }
 
 message:
-        MESSAGE             {$$ = $1;}
+        MESSAGE                             {$$ = $1;}
+
+preposition:
+        PREPOSITION                         {$$ = $1;}
 
 time:
-        NUMBER              {$$ = $1;}
-
+        TIME                                {$$ = $1;}
 
 %%
+
 void yyerror(char *s) {
     fprintf(stderr, "%s\n", s);
 }
