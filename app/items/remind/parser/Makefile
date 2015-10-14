@@ -1,3 +1,5 @@
+# Path to the bin folder
+BIN_PATH = ../../../../bin
 LEX = lex
 YACC = yacc -d
 # LEX = flex
@@ -11,7 +13,7 @@ CC = gcc
 # the C compiler from the y.tab.o and from the lex.yy.o
 
 calc: y.tab.o lex.yy.o
-	$(CC) -o remind y.tab.o lex.yy.o -ll -lm
+	$(CC) -o $(BIN_PATH)/remind y.tab.o lex.yy.o -ll -lm
 
 # These dependency rules indicate that (1) lex.yy.o depends on
 # lex.yy.c and y.tab.h and (2) lex.yy.o and y.tab.o depend on calc.h.
@@ -37,4 +39,4 @@ lex.yy.c: remind.l
 ## from scratch
 
 clean:
-	-rm -f *.o lex.yy.c *.tab.*  remind *.output
+	-rm -f *.o lex.yy.c *.tab.* *.output $(BIN_PATH)/remind
