@@ -7,6 +7,7 @@ body {
 }
 
 input {
+    border-radius: 0 !important;
     font-family: "courier",monospace !important;
 }
 

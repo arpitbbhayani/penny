@@ -7,11 +7,12 @@ $(document).ready(function() {
         var wish = $wish.val();
 
         $.get('/wish', {wish: wish}, function(resp) {
-            console.log(resp.response);
-            $('#reply').addClass('animated slideInDown').html(resp.response.message);
-            setTimeout(function() {
-                $('#reply').removeClass('animated slideInDown');
-            }, 1000);
+            // $('#reply').addClass('animated slideInDown').html(resp.response.message);
+            // setTimeout(function() {
+            //     $('#reply').removeClass('animated slideInDown');
+            // }, 1000);
+            $('#reply').append('Me: ' + wish + '\n');
+            $('#reply').append('Penny: ' + resp + '\n');
         });
 
         $wish.val(null);
