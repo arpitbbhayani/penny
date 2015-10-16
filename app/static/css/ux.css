@@ -6,6 +6,10 @@ body {
     margin: auto auto;
 }
 
+input {
+    font-family: "courier",monospace !important;
+}
+
 
 /*
  *  Clock
