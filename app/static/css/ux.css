@@ -3,7 +3,7 @@ body {
 }
 
 #header {
-    background-color: #FFF;
+    background-color: #4D394B;
 }
 
 #main-content {
@@ -11,33 +11,37 @@ body {
 }
 
 #left-section {
-    background-color: #FF0;
+    background-color: #FFF;
 }
 
 #right-section {
-    background-color: #F0F;
+    background-color: #FFF;
 }
 
 #zone {
     overflow: scroll;
     height: 100%;
 
-    padding-top: 60px;
+    margin-top: 60px;
 }
 
 #chat {
     overflow: scroll;
-    height: 100%;
 
-    padding-top: 60px;
+    margin-top: 60px;
 }
 
 #wish-form {
     width: 100%;
 }
 
+#wish-form h1 {
+    color: #FFF;
+    padding-left: 20px;
+}
+
 #wish-form input {
-    border-radius: 0 !important;
+    border-radius: 500px !important;
     font-family: "courier",monospace !important;
 }
 
