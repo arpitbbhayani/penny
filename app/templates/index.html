@@ -1,13 +1,78 @@
 {% extends "boilerplate.html" %}
 
 {% block content %}
-    <div class="animated slideInRight">
+<div class="ui menu animated slideInDown fixed" id="header">
+    <form id="wish-form" class="ui fluid form">
+        <div class="fields">
+            <div class="four wide field">
+                <h1 class="red">Penny</h1>
+            </div>
+            <div class="eight wide field">
+                <div class="ui fluid input field inline">
+                    <input type="text" id="wish" name="wish">
+                </div>
+            </div>
+            <div class="four wide field">
+            </div>
+        </div>
+        <input type="submit" style="display: none;">
+    </form>
+</div>
+
+<div class="ui grid">
+    <div class="eight wide column" id="left-section">
+        <div class="" id="zone">
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+            <p>abcdefghijklmnopqrstuvwxyz</p><br/>
+
+        </div>
+    </div>
+    <div class="eight wide column" id="right-section">
+        <div id="chat" class="fluid">
+            <div class="ui comments">
+                <div class="content">
+                    <a class="author">Matt</a>
+                    <div class="metadata">
+                        <span class="date">Today at 5:42PM</span>
+                    </div>
+                    <div class="text">
+                        How artistic!
+                    </div>
+                    <div class="actions">
+                        <a class="reply">Reply</a>
+                    </div>
+                </div>
+            </div>
+      </div>
+</div>
+    <!-- div class="animated slideInRight">
         <span class="clock"></span>
     </div>
     <div class="ui text menu segment animated fadeInUp">
     </div>
     <div id="main-content" class="ui grid animated fadeIn">
         <div class="column eight wide">
+            <div class="ui row">
+
+            </div>
             <div class="ui row">
                 <form id="wish-form">
                     <div class="ui input fluid">
@@ -22,7 +87,7 @@
                 <pre id="reply"></pre>
             </div>
         </div>
-    </div>
+    </div> -->
 {% endblock %}
 
 {% block head %}

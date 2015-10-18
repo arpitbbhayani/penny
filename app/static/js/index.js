@@ -2,6 +2,13 @@ $(document).ready(function() {
 
     var $wish = $('#wish');
 
+    $('#wish-form')
+  .visibility({
+    type   : 'fixed',
+    offset : 15 // give some space from top of screen
+  })
+;
+
     $('#wish-form').submit(function(e){
         e.preventDefault();
         var wish = $wish.val();

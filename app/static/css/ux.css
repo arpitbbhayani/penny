@@ -2,15 +2,44 @@ body {
     background-color: #FFF;
 }
 
+#header {
+    background-color: #FFF;
+}
+
 #main-content {
     margin: auto auto;
 }
 
-input {
+#left-section {
+    background-color: #FF0;
+}
+
+#right-section {
+    background-color: #F0F;
+}
+
+#zone {
+    overflow: scroll;
+    height: 100%;
+
+    padding-top: 60px;
+}
+
+#chat {
+    overflow: scroll;
+    height: 100%;
+
+    padding-top: 60px;
+}
+
+#wish-form {
+    width: 100%;
+}
+
+#wish-form input {
     border-radius: 0 !important;
     font-family: "courier",monospace !important;
 }
-
 
 /*
  *  Clock
