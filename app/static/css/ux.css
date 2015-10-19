@@ -22,13 +22,13 @@ body {
     overflow: scroll;
     height: 100%;
 
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 #chat {
     overflow: scroll;
 
-    margin-top: 60px;
+    margin-top: 100px;
 }
 
 #wish-form {
