@@ -1,5 +1,6 @@
 body {
     background-color: #FFF;
+    word-wrap: break-word;
 }
 
 #header {
@@ -15,19 +16,17 @@ body {
 }
 
 #right-section {
-    background-color: #FFF;
+    background-color: #f6f6f6;
 }
 
 #zone {
     overflow: scroll;
     height: 100%;
-
     margin-top: 100px;
 }
 
-#chat {
+#commands {
     overflow: scroll;
-
     margin-top: 100px;
 }
 
@@ -43,6 +42,24 @@ body {
 #wish-form input {
     border-radius: 500px !important;
     font-family: "courier",monospace !important;
+}
+
+#reminders {
+    text-indent: 10px;
+    overflow-y: scroll;
+}
+
+#todos {
+    
+}
+
+.ui.header {
+    padding-top: 10px;
+}
+
+#md-content, #html-content {
+    border-radius: 0 !important;
+    overflow: scroll;
 }
 
 /*

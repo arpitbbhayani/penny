@@ -1,11 +1,16 @@
-var uiModulesClass = function(crons) {
+var uiModulesClass = function() {
     /*
      *  uiModulesClass: Class that defines the UI Modules
      *  Contains all the methods that would enable showing errors,
      *  show waiting ticker, context menu .. etc.
      */
 
-    this.notifySaved = function() {
+    this.notify = function(response) {
+        $('#alert-msg').html(response);
+        $('#alert-zone')
+            .sidebar('setting', 'transition', 'overlay')
+            .sidebar('setting', 'dimPage', false)
+            .sidebar('toggle');
     };
 
     this.showError = function(response) {
@@ -20,7 +25,6 @@ var uiModulesClass = function(crons) {
             .sidebar('setting', 'transition', 'overlay')
             .sidebar('setting', 'dimPage', false)
             .sidebar('toggle');
-
     };
 
     this.showWaiting = function(targetElement) {

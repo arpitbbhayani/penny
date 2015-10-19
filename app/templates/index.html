@@ -4,10 +4,10 @@
 <div class="ui menu animated slideInDown fixed" id="header">
     <form id="wish-form" class="ui fluid form">
         <div class="fields">
-            <div class="four wide field">
+            <div class="three wide field">
                 <h1 class="red">Penny</h1>
             </div>
-            <div class="eight wide field">
+            <div class="ten wide field">
                 <div class="ui fluid input field inline">
                     <input type="text" id="wish" name="wish" placeholder="How may I help you?" autocomplete="off">
                 </div>
@@ -26,19 +26,43 @@
 </div>
 
 <div class="ui grid">
-    <div class="eight wide column" id="left-section">
-        <div class="" id="zone">
-
+    <div class="twelve wide column" id="left-section">
+        <div id="zone" class="ui relaxed grid">
+            <div class="row">
+                <div class="six wide column">
+                    <div id="reminders">
+                        <h4 class="ui dividing header brown">Reminders</h4>
+                        <div class="content"></div>
+                    </div>
+                </div>
+                <div class="ten wide column">
+                    <div id="todos">
+                        <h4 class="ui dividing header green">Todos</h4>
+                        <div class="content">
+                            <div class="ui form">
+                                <div class="field">
+                                    <textarea id="md-content"></textarea>
+                                    <div id="html-content" style="display: none;"></div>
+                                </div>
+                                <div id="toggle-md-div" class="ui green basic button">
+                                    Save & Preview
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="eight wide column" id="right-section">
-        <div id="chat" class="fluid">
-
-      </div>
+    <div class="four wide column" id="right-section">
+        <div id="commands" class="fluid"></div>
+    </div>
 </div>
 {% endblock %}
 
 {% block head %}
+<script src="/static/js/lib/markdown-it.min.js"></script>
+
 <script src="/static/js/index.js"></script>
 <script src="/static/js/clock.js"></script>
 {% endblock %}

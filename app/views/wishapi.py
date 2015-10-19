@@ -3,7 +3,8 @@ from flask import Blueprint
 from flask import render_template, request, redirect
 from flask import url_for, make_response, jsonify
 
-from ..items.remind import remind
+from app.items import commands
+from app.items.remind import remind
 
 mod = Blueprint('wishapi', __name__, )
 
@@ -16,3 +17,8 @@ def wishapi():
     wish = wish[index+1:]
 
     return jsonify(response = remind.fetch(wish))
+
+
+@mod.route('/commands', methods=["GET", "POST"])
+def help():
+    return commands.getCommands()

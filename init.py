@@ -1,18 +1,16 @@
-from app import config
-from app.db.Datastore import Datastore
+from pymongo import MongoClient
 
-#
-# Setup Datastore
-#
-datastore = Datastore()
-datastore.setup()
+from app.items.todo import Todo
+from app.dao.todoDao import TodoDao
 
-#
-# Setup Application Config
-#
-initialConfig = {
-}
+# Create a todo
+client  = MongoClient('mongodb://localhost:27017/')
+db      = client.penny
 
-for k, v in initialConfig.iteritems():
-    if datastore.getConfig(k) == None:
-        datastore.addConfig(k, v)
+db.todo.insert_one({'_id': 'meta'})
+
+dao = TodoDao(Todo(''))
+ret = dao.create()
+assert ret.get('id') is not None
+
+db.todo.update({'_id': 'meta'}, {'$set' : {'todoid' : ret.get('id')}})
