@@ -87,21 +87,11 @@ $(document).ready(function() {
         });
     });
 
-    /* Load Reminders */
-    $.get('/reminders', function(resp) {
-        $.each(resp.response, function(index, value) {
-            $('#reminders table tbody').append(
-                    $('<tr>').attr('id', value.id)
-                        .append($('<td>').html(value.m))
-                        .append($('<td>').html(value.t))
-                        .append($('<td>').html(value.d))
-                        .append($('<td>').append($('<i>').addClass('ui delete icon').click(function(){
-                                var $parentTr = $(this).parents("tr");
-                                $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
-                                    $parentTr.remove();
-                                })
-                        })))
-            );
+    $('#reminders table tbody i').click(function(e){
+        var $parentTr = $(this).parents("tr");
+        $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
+            $parentTr.remove();
         })
     });
+
 });

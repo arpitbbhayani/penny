@@ -12,15 +12,6 @@ from bson import ObjectId
 
 mod = Blueprint('reminder', __name__, )
 
-@mod.route('/', methods=["GET"])
-def getAllReminders():
-    l = [Reminder(id=r.get('_id'), m=r.get('m'),\
-                    d=r.get('d'), t=r.get('t')) for r in ReminderDao(None).all()]
-
-    l = [x.jsonify() for x in l]
-    return jsonify(response = l)
-
-
 @mod.route('/<id>/delete', methods=["POST"])
 def deleteReminder(id):
     id = ObjectId(id)
