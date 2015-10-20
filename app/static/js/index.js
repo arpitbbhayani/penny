@@ -64,7 +64,7 @@ $(document).ready(function() {
                 var result = md.render($md.val());
                 $html.html(result);
 
-                $button.text('Edit');
+                $button.text('Edit Markdown');
             });
         }
         else {

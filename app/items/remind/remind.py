@@ -7,9 +7,7 @@ from app.items.reminder import Reminder
 from app.dao.reminderDao import ReminderDao
 
 def process(wish):
-    print 'Processing wish for: %s' % (wish)
     remindDict = fetch(wish)
-    print 'Dictionary :', remindDict
 
     remindObj = Reminder.fromDict(remindDict)
 
