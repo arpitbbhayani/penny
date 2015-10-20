@@ -84,6 +84,9 @@ $(document).ready(function() {
 
         $.get('/todo/get', {id: Cookies.get('todoid')}, function(resp) {
             $md.val(resp.content);
+            var md = window.markdownit();
+            var result = md.render($md.val());
+            $html.html(result);
         });
     });
 
