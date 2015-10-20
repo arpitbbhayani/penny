@@ -97,4 +97,18 @@ $(document).ready(function() {
         })
     });
 
+    $('#webcomics .item').click(function(e) {
+        var $item = $(this);
+        var comic = $item.attr('id');
+
+        $item.find('.button').addClass('loading');
+
+        $.post('/webcomics/' + comic + '/sync', function(resp) {
+            $item.find('p').html(resp.count);
+        }).
+        always(function() {
+            $item.find('.button').removeClass('loading');
+        });
+    })
+
 });
