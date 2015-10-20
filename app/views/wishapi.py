@@ -16,7 +16,11 @@ def wishapi():
     command = wish[:index]
     wish = wish[index+1:]
 
-    return jsonify(response = remind.fetch(wish))
+    if command == 'remind':
+        resp = remind.process(wish)
+        return jsonify(type='remind', response = resp)
+    else:
+        return jsonify(response = 'Command not fount')
 
 
 @mod.route('/commands', methods=["GET", "POST"])

@@ -7,7 +7,9 @@ app = Flask(__name__)
 from app.views import todo
 from app.views import pages
 from app.views import wishapi
+from app.views import reminders
 
 app.register_blueprint(pages.mod)
 app.register_blueprint(todo.mod, url_prefix='/todo')
+app.register_blueprint(reminders.mod, url_prefix='/reminders')
 app.register_blueprint(wishapi.mod)

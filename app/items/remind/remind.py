@@ -3,10 +3,28 @@ import subprocess as sub
 
 import datetime
 
+from app.items.reminder import Reminder
+from app.dao.reminderDao import ReminderDao
+
+def process(wish):
+    print 'Processing wish for: %s' % (wish)
+    remindDict = fetch(wish)
+    print 'Dictionary :', remindDict
+
+    remindObj = Reminder.fromDict(remindDict)
+
+    dao = ReminderDao(remindObj)
+    ret = dao.create()
+    remindObj.setId(ret.get('id'))
+
+    return remindObj.jsonify()
+
+
 def fetch(wish):
     p = sub.Popen('remind', stdin = sub.PIPE, \
                         stdout = sub.PIPE, stderr = sub.PIPE)
     output, errors = p.communicate(input = wish)
+    print 'Output: ', output
     remindInfo = json.loads(output)
 
     m = remindInfo.get('message')
@@ -23,7 +41,6 @@ def fetch(wish):
         m = 'Reminder of something!'
 
     return {
-        'str'   : 'Reminder set',
         'd'     : str(d),
         't'     : str(t),
         'm'     : m

@@ -27,30 +27,20 @@
 
 <div class="ui grid">
     <div class="twelve wide column" id="left-section">
-        <div id="zone" class="ui relaxed grid">
-            <div class="row">
-                <div class="six wide column">
-                    <div id="reminders">
-                        <h4 class="ui dividing header brown">Reminders</h4>
-                        <div class="content"></div>
-                    </div>
-                </div>
-                <div class="ten wide column">
-                    <div id="todos">
-                        <h4 class="ui dividing header green">Todos</h4>
-                        <div class="content">
-                            <div class="ui form">
-                                <div class="field">
-                                    <textarea id="md-content"></textarea>
-                                    <div id="html-content" style="display: none;"></div>
-                                </div>
-                                <div id="toggle-md-div" class="ui green basic button">
-                                    Save & Preview
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div id="zone">
+            <div class="ui secondary pointing menu">
+                <a class="active item green" data-tab="todo">
+                    Todo
+                </a>
+                <a class="item brown" data-tab="reminder">
+                    Reminder
+                </a>
+            </div>
+            <div class="ui active tab segment basic"  data-tab="todo">
+                {% include 'todo_widget.html' %}
+            </div>
+            <div class="ui tab segment basic"  data-tab="reminder">
+                {% include 'reminder_widget.html' %}
             </div>
         </div>
     </div>

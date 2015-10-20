@@ -10,6 +10,8 @@ $(document).ready(function() {
     var todoNotificationIcon = $('#todos .notification-area > i');
     var todoNotificationText = $('#todos .notification-area > span');
 
+    $('#zone .menu .item').tab({history:false});
+
     $('#wish-form').submit(function(e){
         e.preventDefault();
         var wish = $wish.val();
@@ -18,7 +20,20 @@ $(document).ready(function() {
             var targetType = resp.type;
 
             if(targetType === 'remind') {
+                var value = resp.response;
 
+                $('#reminders table tbody').append(
+                        $('<tr>').attr('id', value.id)
+                            .append($('<td>').html(value.m))
+                            .append($('<td>').html(value.t))
+                            .append($('<td>').html(value.d))
+                            .append($('<td>').append($('<i>').addClass('ui delete icon').click(function(){
+                                    var $parentTr = $(this).parents("tr");
+                                    $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
+                                        $parentTr.remove();
+                                    })
+                            })))
+                );
             }
             else {
                 uiModules.showError('Invalid type ' + resp.type);
@@ -30,11 +45,6 @@ $(document).ready(function() {
         });
 
         $wish.val(null);
-    });
-
-    $('#wish-form').visibility({
-        type   : 'fixed',
-        offset : 15
     });
 
     $('#toggle-md-div').click(function(e) {
@@ -68,11 +78,30 @@ $(document).ready(function() {
         $('#commands').html(resp);
     });
 
+    /* Load Todos */
     $.get('/todo/getid', function(resp){
         Cookies.set('todoid', resp.id);
 
         $.get('/todo/get', {id: Cookies.get('todoid')}, function(resp) {
             $md.val(resp.content);
         });
+    });
+
+    /* Load Reminders */
+    $.get('/reminders', function(resp) {
+        $.each(resp.response, function(index, value) {
+            $('#reminders table tbody').append(
+                    $('<tr>').attr('id', value.id)
+                        .append($('<td>').html(value.m))
+                        .append($('<td>').html(value.t))
+                        .append($('<td>').html(value.d))
+                        .append($('<td>').append($('<i>').addClass('ui delete icon').click(function(){
+                                var $parentTr = $(this).parents("tr");
+                                $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
+                                    $parentTr.remove();
+                                })
+                        })))
+            );
+        })
     });
 });
