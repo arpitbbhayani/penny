@@ -1,4 +1,5 @@
 var uiModules   = new uiModulesClass();
+var markdown = window.markdownit();
 
 $(document).ready(function() {
 
@@ -11,15 +12,37 @@ $(document).ready(function() {
     $('#zone .menu .item').tab({history:false});
     $('.demo.menu .item').tab({history:false});
 
-    $('.edit.button').click(function(e) {
+    $('#todos').ready(function() {
+        $.each($('#todos .segment'), function(index, $element){
+            var $html, $md;
+
+            $element = $($element);
+
+            $md = $element.find('.md-content-name');
+            $html = $element.find('.html-content-name');
+
+            $html.html(markdown.render($md.val()));
+
+            $md = $element.find('.md-content');
+            $html = $element.find('.html-content');
+
+            $html.html(markdown.render($md.val()));
+        });
+    });
+
+    $('#todos').on('click', '.edit.button', function() {
         var $button = $(this);
         var $html = $button.parent().siblings('.html-content');
         var $md = $button.parent().siblings('.md-content');
+        var $htmlname = $button.parent().siblings('.html-content-name');
+        var $mdname = $button.parent().siblings('.md-content-name');
 
         if($html.css('display') == 'none') {
-            var md = window.markdownit();
-            var result = md.render($md.val());
+            var result = markdown.render($md.val());
             $html.html(result);
+
+            result = markdown.render($mdname.val());
+            $htmlname.html(result);
 
             $button.text('Edit');
         }
@@ -28,6 +51,19 @@ $(document).ready(function() {
         }
         $md.toggle();
         $html.toggle();
+        $mdname.toggle();
+        $htmlname.toggle();
+    });
+
+    $('#todos').on('click', '.save.button', function() {
+        var $button = $(this);
+        var $mdname = $button.parent().parent().find('input');
+        var $md = $button.parent().parent().find('textarea');
+        var id = $button.parent().parent().attr('data-tab');
+
+        $.post('/todos/save', {id:id, name: $mdname.val(), content: $md.val()}, function(resp){
+            console.log('Saved');
+        });
     });
 
     $('#new-todo').click(function(e) {
@@ -38,15 +74,30 @@ $(document).ready(function() {
             var $todoContent = $('<div>').addClass('ui tab basic segment basic')
                                 .attr('data-tab', resp.id)
                                 .append(
+                                    $('<div>').addClass('ui text menu right floated')
+                                        .append($('<div>').addClass('ui edit button item').text('Edit'))
+                                        .append($('<div>').addClass('ui save button item').text('Save'))
+                                        .append($('<div>').addClass('ui download button item').text('Download'))
+                                )
+                                .append(
+                                    $('<div>').addClass('ui horizontal divider')
+                                )
+                                .append(
+                                    $('<input>').addClass('ui fluid md-content-name')
+                                        .attr('style', 'display:none;').val(resp.name)
+                                )
+                                .append(
+                                    $('<div>').addClass('html-content-name').html(markdown.render(resp.name))
+                                )
+                                .append(
+                                    $('<div>').addClass('ui horizontal divider')
+                                )
+                                .append(
                                     $('<textarea>').addClass('md-content')
                                         .attr('style', 'display:none;').html(resp.content)
                                 )
                                 .append(
-                                    $('<div>').addClass('html-content').html('')
-                                )
-                                .append(
-                                    $('<div>').addClass('ui orange edit button')
-                                        .html('Edit Markdown')
+                                    $('<div>').addClass('html-content')
                                 );
             $button.parent().append($menuItem);
             $button.parent().parent().next().prepend($todoContent);
@@ -94,16 +145,6 @@ $(document).ready(function() {
 
     $.get('/commands', function(resp) {
         $('#commands').html(resp);
-    });
-
-    /* Load Todos */
-    $.get('/todo/getid', function(resp){
-        $.get('/todo/get', {id: Cookies.get('todoid')}, function(resp) {
-            $md.val(resp.content);
-            var md = window.markdownit();
-            var result = md.render($md.val());
-            $html.html(result);
-        });
     });
 
     $('#reminders table tbody i').click(function(e){

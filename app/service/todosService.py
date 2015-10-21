@@ -24,6 +24,14 @@ def create_todo(name):
     return todoObj
 
 
+def save_todo(todoObj):
+    """
+    Updates the todoObj in database
+    """
+    r = TodoServiceDao().save_todo(todoObj)
+    return r
+
+
 def get_todos():
     """
     Returns the list of Todo Objects

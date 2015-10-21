@@ -19,11 +19,14 @@
                             <button class="ui save button item">Save</button>
                             <button class="ui download button item">Download</button>
                         </div>
+                        <div class="ui horizontal divider"></div>
+                        <input class="ui fluid md-content-name" type="text" value="{{todo.name}}" style="display: none;">
+                        <div class="html-content-name"></div>
+                        <div class="ui horizontal divider"></div>
                         <textarea class="md-content" style="display: none;">{{todo.content}}</textarea>
                         <div class="html-content"></div>
                     </div>
                     {% endfor %}
-
                 </div>
             </div>
         </div>

@@ -6,11 +6,13 @@ class Todo():
         self.name = name
         self.content = content
 
+
     @classmethod
     def fromDB(cls, dbObj):
         obj = cls(dbObj.get('name'), dbObj.get('content'))
         obj.id = dbObj.get('_id')
         return obj
+
 
     def jsonify(self):
         return {

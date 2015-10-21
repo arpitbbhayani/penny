@@ -12,42 +12,29 @@ from app.service import todosService
 
 from bson import ObjectId
 
-mod = Blueprint('todo', __name__, )
+mod = Blueprint('todos', __name__, )
 
 @mod.route('/create', methods=['POST'])
 def create():
     todoObj = todosService.create_todo('Default Name')
     return jsonify(todoObj.jsonify())
 
+
 @mod.route('/save', methods=["POST"])
 def save():
     parser = reqparse.RequestParser()
     parser.add_argument('id', required=True, type=ObjectId, help='Rate cannot be converted', location='form')
-    parser.add_argument('mdcontent', required=True, type=unicode, help='mdcontent is not unicode', location='form')
+    parser.add_argument('name', required=True, type=unicode, help='name is not unicode', location='form')
+    parser.add_argument('content', required=True, type=unicode, help='content is not unicode', location='form')
     args = parser.parse_args()
 
     id = args.get('id')
-    mdcontent = args.get('mdcontent')
+    name = args.get('name')
+    content = args.get('content')
 
-    todoObj = Todo(id=id, c=mdcontent)
+    todoObj = Todo(name=name, content=content)
+    todoObj.id = id
 
-    dao = TodoDao(todoObj)
-    ret = dao.save()
-    return jsonify(id = str(id))
+    updated = todosService.save_todo(todoObj)
 
-
-@mod.route('/getid', methods=["GET"])
-def getid():
-    dao = TodoDao(None)
-    id = dao.getTodoId()
-    return jsonify(id = str(id))
-
-
-@mod.route('/get', methods=["GET"])
-def getTodo():
-    parser = reqparse.RequestParser()
-    parser.add_argument('id', required=True, type=ObjectId, help='Todo ID should be passed', location='args')
-    args = parser.parse_args()
-
-    todoObj = Todo.fromId(args.get('id'))
-    return jsonify(id=str(todoObj.getId()), content=todoObj.getContent())
+    return jsonify(updated = updated)
