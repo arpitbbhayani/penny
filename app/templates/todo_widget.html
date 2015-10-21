@@ -12,32 +12,20 @@
                     </div>
                 </div>
                 <div class="twelve wide stretched column ui form">
-
                     {% for todo in todos %}
                     <div class="ui tab basic segment basic" data-tab="{{todo.id}}">
-                        <div class="ui small basic icon orange buttons right floated">
-                            <button class="ui edit button"><i class="edit icon"></i></button>
-                            <button class="ui save button"><i class="save icon"></i></button>
-                            <button class="ui download button"><i class="download icon"></i></button>
+                        <div class="ui text menu right floated">
+                            <button class="ui edit button item">Edit</button>
+                            <button class="ui save button item">Save</button>
+                            <button class="ui download button item">Download</button>
                         </div>
-                        <textarea class="md-content" style="display: none;">
-                            {{todo.content}}
-                        </textarea>
+                        <textarea class="md-content" style="display: none;">{{todo.content}}</textarea>
                         <div class="html-content"></div>
                     </div>
                     {% endfor %}
 
                 </div>
             </div>
-            <!-- <div class="ui form">
-                <div class="field">
-                    <textarea id="md-content" style="display: none;"></textarea>
-                    <div id="html-content"></div>
-                </div>
-                <div id="toggle-md-div" class="ui orange button">
-                    Edit Markdown
-                </div>
-            </div> -->
         </div>
     </div>
 </div>

@@ -13,8 +13,8 @@ $(document).ready(function() {
 
     $('.edit.button').click(function(e) {
         var $button = $(this);
-        var $html = $button.siblings('.html-content');
-        var $md = $button.siblings('.md-content');
+        var $html = $button.parent().siblings('.html-content');
+        var $md = $button.parent().siblings('.md-content');
 
         if($html.css('display') == 'none') {
             var md = window.markdownit();
