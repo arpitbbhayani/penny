@@ -2,20 +2,19 @@ from app.dao.todoDao import TodoDao
 
 class Todo():
 
-    def __init__(self, c=None, id=None):
-        self.id = id
-        self.content = c
+    def __init__(self, name, content):
+        self.name = name
+        self.content = content
 
     @classmethod
-    def fromId(cls, id):
-        ret = TodoDao(None).fromId(id)
-        return cls(ret.get('content'), ret.get('_id'))
+    def fromDB(cls, dbObj):
+        obj = cls(dbObj.get('name'), dbObj.get('content'))
+        obj.id = dbObj.get('_id')
+        return obj
 
-    def getId(self):
-        return self.id
-
-    def getContent(self):
-        return self.content
-
-    def setContent(self, c):
-        self.content = c
+    def jsonify(self):
+        return {
+            'id': str(self.id),
+            'name': self.name,
+            'content': self.content
+        }

@@ -3,14 +3,59 @@ var uiModules   = new uiModulesClass();
 $(document).ready(function() {
 
     var $wish = $('#wish');
-    var $md = $('#md-content');
-    var $html = $('#html-content');
 
     var todoNotificationArea = $('#todos .notification-area');
     var todoNotificationIcon = $('#todos .notification-area > i');
     var todoNotificationText = $('#todos .notification-area > span');
 
     $('#zone .menu .item').tab({history:false});
+    $('.demo.menu .item').tab({history:false});
+
+    $('.edit.button').click(function(e) {
+        var $button = $(this);
+        var $html = $button.siblings('.html-content');
+        var $md = $button.siblings('.md-content');
+
+        if($html.css('display') == 'none') {
+            var md = window.markdownit();
+            var result = md.render($md.val());
+            $html.html(result);
+
+            $button.text('Edit');
+        }
+        else {
+            $button.text('Preview');
+        }
+        $md.toggle();
+        $html.toggle();
+    });
+
+    $('#new-todo').click(function(e) {
+        $button = $(this);
+        $.post('/todos/create', function(resp) {
+            var $menuItem = $('<a>').addClass('item').attr('data-tab', resp.id)
+                                    .html(resp.name);
+            var $todoContent = $('<div>').addClass('ui tab basic segment basic')
+                                .attr('data-tab', resp.id)
+                                .append(
+                                    $('<textarea>').addClass('md-content')
+                                        .attr('style', 'display:none;').html(resp.content)
+                                )
+                                .append(
+                                    $('<div>').addClass('html-content').html('')
+                                )
+                                .append(
+                                    $('<div>').addClass('ui orange edit button')
+                                        .html('Edit Markdown')
+                                );
+            $button.parent().append($menuItem);
+            $button.parent().parent().next().prepend($todoContent);
+            $button.parent().children().last().tab({history:false});
+        })
+        .fail(function() {
+            uiModules.showError('Something went wrong while creating a Todo');
+        });
+    })
 
     $('#wish-form').submit(function(e){
         e.preventDefault();
@@ -47,41 +92,12 @@ $(document).ready(function() {
         $wish.val(null);
     });
 
-    $('#toggle-md-div').click(function(e) {
-        e.preventDefault();
-
-        var $button = $(this);
-        if($html.css('display') == 'none') {
-
-            $.post('/todo/save', {id: Cookies.get('todoid'), mdcontent: $md.val()}, function(resp) {
-                uiModules.notify('Data saved successfully');
-            })
-            .fail(function() {
-                uiModules.showError('Something went wrong while saving the data');
-            })
-            .always(function() {
-                var md = window.markdownit();
-                var result = md.render($md.val());
-                $html.html(result);
-
-                $button.text('Edit Markdown');
-            });
-        }
-        else {
-            $button.text('Save & Preview');
-        }
-        $md.toggle();
-        $html.toggle();
-    });
-
     $.get('/commands', function(resp) {
         $('#commands').html(resp);
     });
 
     /* Load Todos */
     $.get('/todo/getid', function(resp){
-        Cookies.set('todoid', resp.id);
-
         $.get('/todo/get', {id: Cookies.get('todoid')}, function(resp) {
             $md.val(resp.content);
             var md = window.markdownit();

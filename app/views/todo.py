@@ -8,9 +8,16 @@ from flask.ext.restful import reqparse
 from app.items.todo import Todo
 from app.dao.todoDao import TodoDao
 
+from app.service import todosService
+
 from bson import ObjectId
 
 mod = Blueprint('todo', __name__, )
+
+@mod.route('/create', methods=['POST'])
+def create():
+    todoObj = todosService.create_todo('Default Name')
+    return jsonify(todoObj.jsonify())
 
 @mod.route('/save', methods=["POST"])
 def save():

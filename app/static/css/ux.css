@@ -63,6 +63,11 @@ body {
     overflow: scroll;
 }
 
+textarea {
+    width: 100% !important;
+    height:100% !important;
+}
+
 /*
  *  Clock
  */
