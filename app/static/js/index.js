@@ -84,13 +84,13 @@ $(document).ready(function() {
                                 .attr('data-tab', resp.id)
                                 .append(
                                     $('<div>').addClass('ui text menu right floated')
-                                        .append($('<div>').addClass('ui edit button item').text('Edit'))
-                                        .append($('<div>').addClass('ui save button item').text('Save'))
-                                        .append($('<div>').addClass('ui download button item').text('Download'))
-                                        .append($('<div>').addClass('ui delete button item').text('Download'))
+                                        .append($('<div>').addClass('ui edit basic button item').text('Edit'))
+                                        .append($('<div>').addClass('ui save basic button item').text('Save'))
+                                        .append($('<div>').addClass('ui download basic button item').text('Download'))
+                                        .append($('<div>').addClass('ui delete basic button item').text('Download'))
                                 )
                                 .append(
-                                    $('<div>').addClass('ui horizontal divider')
+                                    $('<div>').addClass('ui section divider')
                                 )
                                 .append(
                                     $('<input>').addClass('ui fluid md-content-name')

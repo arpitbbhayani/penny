@@ -15,12 +15,12 @@
                     {% for todo in todos %}
                     <div class="ui tab basic segment basic" data-tab="{{todo.id}}">
                         <div class="ui text menu right floated">
-                            <button class="ui edit button item">Edit</button>
-                            <button class="ui save button item">Save</button>
-                            <button class="ui download button item">Download</button>
-                            <button class="ui delete button item">Delete</button>
+                            <button class="ui edit basic button item">Edit</button>
+                            <button class="ui save basic button item">Save</button>
+                            <button class="ui download basic button item">Download</button>
+                            <button class="ui delete basic button item">Delete</button>
                         </div>
-                        <div class="ui horizontal divider"></div>
+                        <div class="ui section divider"></div>
                         <input class="ui fluid md-content-name" type="text" value="{{todo.name}}" style="display: none;">
                         <div class="html-content-name"></div>
                         <div class="ui horizontal divider"></div>
