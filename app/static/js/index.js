@@ -66,6 +66,15 @@ $(document).ready(function() {
         });
     });
 
+    $('#todos').on('click', '.delete.button', function() {
+        var $button = $(this);
+        var id = $button.parent().parent().attr('data-tab');
+
+        $.post('/todos/delete', {id:id}, function(resp){
+            $('*[data-tab="'+id+'"]').remove();
+        });
+    });
+
     $('#new-todo').click(function(e) {
         $button = $(this);
         $.post('/todos/create', function(resp) {
@@ -78,6 +87,7 @@ $(document).ready(function() {
                                         .append($('<div>').addClass('ui edit button item').text('Edit'))
                                         .append($('<div>').addClass('ui save button item').text('Save'))
                                         .append($('<div>').addClass('ui download button item').text('Download'))
+                                        .append($('<div>').addClass('ui delete button item').text('Download'))
                                 )
                                 .append(
                                     $('<div>').addClass('ui horizontal divider')

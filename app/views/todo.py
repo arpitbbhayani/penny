@@ -20,6 +20,18 @@ def create():
     return jsonify(todoObj.jsonify())
 
 
+@mod.route('/delete', methods=['POST'])
+def delete():
+    parser = reqparse.RequestParser()
+    parser.add_argument('id', required=True, type=ObjectId, help='Rate cannot be converted', location='form')
+    args = parser.parse_args()
+
+    id = args.get('id')
+    deleted = todosService.delete_todo(id)
+
+    return jsonify(deleted = deleted)
+
+
 @mod.route('/save', methods=["POST"])
 def save():
     parser = reqparse.RequestParser()

@@ -9,7 +9,6 @@ def delete_todo(id):
     todoObj.id = id
 
     r = TodoServiceDao().delete_todo(todoObj)
-
     return r is not None
 
 

@@ -35,4 +35,4 @@ class TodoServiceDao():
         r = self.db.todos.remove({
             '_id': todoObj.id
         })
-        return r
+        return r.get('n') == 1
