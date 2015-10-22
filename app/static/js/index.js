@@ -133,12 +133,7 @@ $(document).ready(function() {
                             .append($('<td>').html(value.m))
                             .append($('<td>').html(value.t))
                             .append($('<td>').html(value.d))
-                            .append($('<td>').append($('<i>').addClass('ui delete icon').click(function(){
-                                    var $parentTr = $(this).parents("tr");
-                                    $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
-                                        $parentTr.remove();
-                                    })
-                            })))
+                            .append($('<td>').append($('<i>').addClass('ui delete icon')))
                 );
             }
             else {
@@ -157,7 +152,7 @@ $(document).ready(function() {
         $('#commands').html(resp);
     });
 
-    $('#reminders table tbody i').click(function(e){
+    $('#reminders table tbody i').on('click', function(e){
         var $parentTr = $(this).parents("tr");
         $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
             $parentTr.remove();

@@ -4,7 +4,8 @@ body {
 }
 
 #header {
-    background-color: #4D394B;
+    /*background-color: #4D394B;*/
+    background-color: #FFF;
 }
 
 #main-content {
@@ -16,27 +17,27 @@ body {
 }
 
 #right-section {
-    background-color: #f6f6f6;
+    background-color: #f8f8f8;
 }
 
 #zone {
     overflow: scroll;
     height: 100%;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 #commands {
     overflow: scroll;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 #wish-form {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 #wish-form h1 {
-    color: #FFF;
+    color: #00B5AD;
     padding-left: 20px;
 }
 
@@ -44,6 +45,11 @@ body {
     border-radius: 500px !important;
     font-family: "courier",monospace !important;
 }
+
+#wish-form .field, #wish-form .fields {
+    margin: 0 0 !important;
+}
+
 
 #reminders {
     text-indent: 10px;

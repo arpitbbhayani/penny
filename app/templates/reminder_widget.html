@@ -2,13 +2,13 @@
     <div class="column"></div>
     <div class="fourteen wide column">
         <div id="reminders" class="content">
-            <table class="ui table brown">
+            <table class="ui very basic collapsing table">
                 <thead>
                     <tr>
                         <th class="eleven wide">Message</th>
                         <th class="two wide">Time</th>
                         <th class="two wide">Date</th>
-                        <th class="one wide">Actions</th>
+                        <th class="one wide"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -17,7 +17,7 @@
                             <td>{{row.m}}</td>
                             <td>{{row.t}}</td>
                             <td>{{row.d}}</td>
-                            <td><i class="ui delete icon"></i></td>
+                            <td><i class="ui red delete icon"></i></td>
                         </tr>
                     {% endfor %}
                 </tbody>
