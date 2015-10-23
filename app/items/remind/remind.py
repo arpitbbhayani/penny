@@ -37,7 +37,7 @@ def process(wish):
     remindObj.id = ret.get('id')
 
     tab = CronTab(user=True)
-    job = tab.new(config.REMIND_COMMAND, comment=str(remindObj.id))
+    job = tab.new(config.REMIND_COMMAND + ' -m "%s"' % remindObj.message, comment=str(remindObj.id))
     job.setall(cron_str)
     tab.write()
 
