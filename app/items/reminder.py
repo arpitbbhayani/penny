@@ -1,3 +1,5 @@
+import datetime
+from app.utils import readable
 from app.dao.reminderDao import ReminderDao
 
 class Reminder():
@@ -20,29 +22,6 @@ class Reminder():
         t = remindDict.get('t')
         return cls(m=m, d=d, t=t)
 
-    def getId(self):
-        return self.id
-
-    def setId(self, id):
-        self.id = id
-
-    def getMessage(self):
-        return self.message
-
-    def setMessage(self, m):
-        self.message = m
-
-    def getTime(self):
-        return self.time
-
-    def setTime(self, t):
-        self.time = t
-
-    def getDate(self):
-        return self.date
-
-    def setDate(self, d):
-        self.date = d
 
     def toDict(self):
         return {
@@ -53,9 +32,13 @@ class Reminder():
         }
 
     def jsonify(self):
+        id = str(self.id)
+        m = self.message
+        t = self.time if type(self.time) == str or type(self.time) == unicode else readable.time(self.time)
+        d = self.date if type(self.date) == str or type(self.date) == unicode else readable.date(self.date)
         return {
-            'id': str(self.id),
-            'm' : self.message,
-            't' : self.time,
-            'd' : self.date
+            'id': id,
+            'm' : m,
+            't' : t,
+            'd' : d
         }

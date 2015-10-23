@@ -87,7 +87,7 @@ $(document).ready(function() {
                                         .append($('<div>').addClass('ui edit basic button item').text('Edit'))
                                         .append($('<div>').addClass('ui save basic button item').text('Save'))
                                         .append($('<div>').addClass('ui download basic button item').text('Download'))
-                                        .append($('<div>').addClass('ui delete basic button item').text('Download'))
+                                        .append($('<div>').addClass('ui delete basic button item').text('Delete'))
                                 )
                                 .append(
                                     $('<div>').addClass('ui section divider')
@@ -118,6 +118,13 @@ $(document).ready(function() {
         });
     })
 
+    $('#reminders').on('click', 'i.delete', function(e){
+        var $parentTr = $(this).parents("tr");
+        $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
+            $parentTr.remove();
+        })
+    });
+
     $('#wish-form').submit(function(e){
         e.preventDefault();
         var wish = $wish.val();
@@ -133,7 +140,7 @@ $(document).ready(function() {
                             .append($('<td>').html(value.m))
                             .append($('<td>').html(value.t))
                             .append($('<td>').html(value.d))
-                            .append($('<td>').append($('<i>').addClass('ui delete icon')))
+                            .append($('<td>').append($('<i>').addClass('ui delete red icon')))
                 );
             }
             else {
@@ -150,13 +157,6 @@ $(document).ready(function() {
 
     $.get('/commands', function(resp) {
         $('#commands').html(resp);
-    });
-
-    $('#reminders table tbody i').on('click', function(e){
-        var $parentTr = $(this).parents("tr");
-        $.post('/reminders/' + $parentTr.attr('id') + '/delete', function(resp) {
-            $parentTr.remove();
-        })
     });
 
     $('#webcomics .item').click(function(e) {

@@ -17,8 +17,10 @@ def wishapi():
     wish = wish[index+1:]
 
     if command == 'remind':
-        resp = remind.process(wish)
-        return jsonify(type='remind', response = resp)
+        resp, error = remind.process(wish)
+        if resp is None:
+            resp = ''
+        return jsonify(type='remind', response=resp, error=error)
     else:
         return jsonify(response = 'Command not fount')
 

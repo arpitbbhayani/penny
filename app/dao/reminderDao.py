@@ -9,9 +9,9 @@ class ReminderDao():
 
     def create(self):
         ret = self.db.reminders.insert_one({
-            'm': self.reminderObj.getMessage(),
-            't': self.reminderObj.getTime(),
-            'd': self.reminderObj.getDate()
+            'm': self.reminderObj.message,
+            't': str(self.reminderObj.time),
+            'd': str(self.reminderObj.date)
         })
         return {
             'id': ret.inserted_id

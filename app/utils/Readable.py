@@ -1,5 +1,17 @@
 from datetime import datetime
 
+def date(d):
+    """
+    Returns human readable date from datetime.date object
+    """
+    return d.strftime('%d %B')
+
+def time(t):
+    """
+    Returns human readable time from datatime.time object
+    """
+    return t.strftime('%I:%M %p')
+
 def fromTS(timestamp):
     """
     Returns human readable date-time format from timestamp
