@@ -12,7 +12,7 @@ def time(t):
     """
     return t.strftime('%I:%M %p')
 
-def fromTS(timestamp):
+def from_ts(timestamp):
     """
     Returns human readable date-time format from timestamp
     """

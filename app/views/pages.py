@@ -20,6 +20,6 @@ def index():
     todos = todosService.get_todos()
 
     # comics
-    counts = webcomicsService.getCounts()
+    comics_meta = webcomicsService.get_comics_meta_info()
 
-    return render_template('index.html', reminders = remindersJson,  comics = counts, todos=todos)
+    return render_template('index.html', reminders=remindersJson,  comics=comics_meta, todos=todos)

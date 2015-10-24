@@ -4,14 +4,15 @@
         <div class="content">
             <div id="webcomics" class="ui very relaxed vertical list">
                 {% for comic in comics %}
-                <div id="{{comic.name}}" class="item">
+                <div id="{{comic.id}}">
                     <div class="ui labeled basic button" tabindex="0">
-                        <div class="ui teal basic button">
-                            <i class="refresh icon"></i>{{comic.display_name}}
+                        <div class="ui teal basic label">
+                            <i class="refresh icon"></i>{{comic.name}}
                         </div>
                         <p class="ui basic teal left pointing label">{{comic.links_count}}</p>
                     </div>
-                    <label class="red">Last synced on: {{comics.last_sync}}</label>
+                    <span class="bold">Last synced on : </span>
+                    <label>{{comic.last_sync}}</label>
                 </div>
                 {% endfor %}
             </div>

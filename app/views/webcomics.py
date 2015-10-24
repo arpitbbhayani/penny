@@ -7,9 +7,7 @@ from app.service import webcomicsService
 
 mod = Blueprint('webcomics', __name__, )
 
-@mod.route('/<id>/sync', methods=["POST"])
-def deleteReminder(id):
-
-    comic = webcomicsService.getComic(id)
-
-    return jsonify(count=10)
+@mod.route('/<comic_id>/sync', methods=["POST"])
+def sync_webcomic(comic_id):
+    ret = webcomicsService.sync(comic_id)
+    return jsonify(resp=ret)

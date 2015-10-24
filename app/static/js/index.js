@@ -159,17 +159,20 @@ $(document).ready(function() {
         $('#commands').html(resp);
     });
 
-    $('#webcomics .item').click(function(e) {
-        var $item = $(this);
-        var comic = $item.attr('id');
+    $('#webcomics .button').click(function(e) {
+        var $comic = $(this).parent()
 
-        $item.find('.button').addClass('loading');
+        var comic_id = $comic.attr('id');
+        var $button = $comic.find('.button');
 
-        $.post('/webcomics/' + comic + '/sync', function(resp) {
-            $item.find('p').html(resp.count);
+        $button.addClass('loading');
+
+        $.post('/webcomics/' + comic_id + '/sync', function(response) {
+            $comic.find('p').text(response.resp.links_count);
+            $comic.find('label').text(response.resp.last_sync);
         }).
         always(function() {
-            $item.find('.button').removeClass('loading');
+            $button.removeClass('loading');
         });
     })
 
