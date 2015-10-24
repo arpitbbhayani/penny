@@ -134,6 +134,12 @@ $(document).ready(function() {
 
             if(targetType === 'remind') {
                 var value = resp.response;
+                var error = resp.error
+
+                if (error) {
+                    uiModules.showError(error);
+                    return;
+                }
 
                 $('#reminders table tbody').append(
                         $('<tr>').attr('id', value.id)
@@ -142,6 +148,23 @@ $(document).ready(function() {
                             .append($('<td>').html(value.d))
                             .append($('<td>').append($('<i>').addClass('ui delete red icon')))
                 );
+            }
+            else if(targetType === 'comic') {
+                var url = resp.response;
+                var error = resp.error
+
+                if (error) {
+                    uiModules.showError(error);
+                    return;
+                }
+
+                $('#webcomic-modal iframe').attr('src', url);
+                $('#webcomic-modal').modal({
+                    onVisible: function () {
+                        $("#webcomic-modal").modal("refresh");
+                    }
+                }).modal('show');
+
             }
             else {
                 uiModules.showError('Invalid type ' + resp.type);

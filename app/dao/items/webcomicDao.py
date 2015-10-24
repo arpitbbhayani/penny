@@ -36,6 +36,14 @@ class WebcomicDao():
         return ret
 
 
+    def get_comics_ids(self):
+        """
+        Returns list of comic ids
+        """
+        ret = self.db.webcomics.find({})
+        return [r.get('_id') for r in ret]
+
+
     def get_comic_by_id(self, comic_id):
         """
         Returns comic object from name

@@ -5,6 +5,7 @@ from flask import url_for, make_response, jsonify
 
 from app.items import commands
 from app.items.remind import remind
+from app.items.webcomic import webcomic
 
 mod = Blueprint('wishapi', __name__, )
 
@@ -12,15 +13,25 @@ mod = Blueprint('wishapi', __name__, )
 def wishapi():
     wish = request.args.get('wish')
 
-    index = wish.index(' ')
-    command = wish[:index]
-    wish = wish[index+1:]
+    index = wish.find(' ')
+
+    if index != -1:
+        command = wish[:index]
+        wish = wish[index+1:]
+    else:
+        command = wish.strip()
+        wish = None
 
     if command == 'remind':
         resp, error = remind.process(wish)
         if resp is None:
             resp = ''
         return jsonify(type='remind', response=resp, error=error)
+    elif command == 'comic':
+        resp, error = webcomic.process(wish)
+        if resp is None:
+            resp = ''
+        return jsonify(type='comic', response=resp, error=error)
     else:
         return jsonify(response = 'Command not fount')
 

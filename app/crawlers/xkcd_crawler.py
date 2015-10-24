@@ -31,6 +31,7 @@ class XkcdComic():
 
         for anchor in anchors:
             url = urlparse.urljoin(base_url, anchor.get('href'))
+
             title = anchor.text
 
             if url not in urls:

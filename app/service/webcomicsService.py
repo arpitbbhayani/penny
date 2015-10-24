@@ -24,6 +24,13 @@ def get_comic_urls(comic_id):
     urls = dao.get_comic_urls(comic_id)
     return urls
 
+
+def get_comics_ids():
+    dao = WebcomicDao()
+    ids = dao.get_comics_ids()
+    return ids
+
+
 def sync(comic_id):
     dao, crawler = None, None
 
