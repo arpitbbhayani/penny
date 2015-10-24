@@ -33,7 +33,6 @@ try:
         '_id': 'xkcd',
         'name': 'xkcd',
         'base_url': 'http://xkcd.com/',
-        'crawl_url': 'http://xkcd.com/archive/',
         'last_sync': None,
         'links_count': 0,
         'is_active': True,

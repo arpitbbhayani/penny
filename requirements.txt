@@ -10,6 +10,7 @@ ipython-genutils==0.1.0
 itsdangerous==0.24
 Jinja2==2.8
 logilab-common==1.1.0
+lxml==3.4.4
 Markdown==2.6.2
 MarkupSafe==0.23
 nose==1.3.7
@@ -24,6 +25,7 @@ pymongo==3.0.3
 python-crontab==1.9.3
 python-dateutil==2.4.2
 pytz==2015.6
+requests==2.8.1
 simplegeneric==0.8.1
 six==1.10.0
 traitlets==4.0.0
