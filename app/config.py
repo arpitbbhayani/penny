@@ -15,3 +15,10 @@ REMIND_COMMAND = '%s/penenv/bin/python %s/bin/crons/remind_cron.py' % (os.getcwd
 # Webcomics
 
 XKCD_CRAWLER_URL = 'http://xkcd.com/archive/'
+
+
+# Astros
+
+QUARKS_CRAWLER_URL = [
+    'http://www.fromquarkstoquasars.com/post-sitemap1.xml'
+]

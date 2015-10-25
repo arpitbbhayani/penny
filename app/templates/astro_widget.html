@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="ui basic modal" id="astro-modal">
+        <iframe src="" width='100%' height = '100%'></iframe>
+    </div>
+    <div class="column"></div>
+    <div class="fourteen wide column">
+        <div class="content">
+            <div id="astros" class="ui very relaxed vertical list">
+                {% for astro in astros %}
+                <div id="{{astro.id}}">
+                    <div class="ui labeled basic button" tabindex="0">
+                        <div class="ui teal basic label">
+                            <i class="refresh icon"></i>{{astro.name}}
+                        </div>
+                        <p class="ui basic teal left pointing label">{{astro.links_count}}</p>
+                    </div>
+                    <span class="bold">Last synced on : </span>
+                    <label>{{astro.last_sync}}</label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

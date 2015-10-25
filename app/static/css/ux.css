@@ -42,6 +42,7 @@ body {
 }
 
 #wish-form input {
+    text-indent: 10px;
     border-radius: 500px !important;
     font-family: "courier",monospace !important;
 }

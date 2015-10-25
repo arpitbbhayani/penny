@@ -40,3 +40,21 @@ try:
     })
 except DuplicateKeyError:
     print 'xkcd comic already exists.'
+
+
+# Create Astros
+from app.service import astrosService
+
+# 1. Quars to Quasars
+try:
+    astro_quarks = astrosService.create_astro('quarks', {
+        '_id': 'quarks',
+        'name': 'From quarks to quasars',
+        'base_url': 'http://www.fromquarkstoquasars.com/',
+        'last_sync': None,
+        'links_count': 0,
+        'is_active': True,
+        'links': []
+    })
+except DuplicateKeyError:
+    print 'Quars to Quasars astro already exists.'

@@ -166,6 +166,23 @@ $(document).ready(function() {
                 }).modal('show');
 
             }
+            else if(targetType === 'astro') {
+                var url = resp.response;
+                var error = resp.error
+
+                if (error) {
+                    uiModules.showError(error);
+                    return;
+                }
+
+                $('#astro-modal iframe').attr('src', url);
+                $('#astro-modal').modal({
+                    onVisible: function () {
+                        $("#astro-modal").modal("refresh");
+                    }
+                }).modal('show');
+
+            }
             else {
                 uiModules.showError('Invalid type ' + resp.type);
             }
@@ -193,6 +210,24 @@ $(document).ready(function() {
         $.post('/webcomics/' + comic_id + '/sync', function(response) {
             $comic.find('p').text(response.resp.links_count);
             $comic.find('label').text(response.resp.last_sync);
+        }).
+        always(function() {
+            $button.removeClass('disabled');
+        });
+    })
+
+
+    $('#astros .button').click(function(e) {
+        var $astro = $(this).parent()
+
+        var astro_id = $astro.attr('id');
+        var $button = $astro.find('.button');
+
+        $button.addClass('disabled');
+
+        $.post('/astros/' + astro_id + '/sync', function(response) {
+            $astro.find('p').text(response.resp.links_count);
+            $astro.find('label').text(response.resp.last_sync);
         }).
         always(function() {
             $button.removeClass('disabled');
