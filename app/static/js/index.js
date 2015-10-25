@@ -188,14 +188,14 @@ $(document).ready(function() {
         var comic_id = $comic.attr('id');
         var $button = $comic.find('.button');
 
-        $button.addClass('loading');
+        $button.addClass('disabled');
 
         $.post('/webcomics/' + comic_id + '/sync', function(response) {
             $comic.find('p').text(response.resp.links_count);
             $comic.find('label').text(response.resp.last_sync);
         }).
         always(function() {
-            $button.removeClass('loading');
+            $button.removeClass('disabled');
         });
     })
 
