@@ -150,7 +150,7 @@ $(document).ready(function() {
                 );
             }
             else if(targetType === 'comic') {
-                var url = resp.response;
+                var link = resp.response;
                 var error = resp.error
 
                 if (error) {
@@ -158,10 +158,14 @@ $(document).ready(function() {
                     return;
                 }
 
-                $('#webcomic-modal iframe').attr('src', url);
-                $('#webcomic-modal').modal({
+                var $webcomicmodal = $('#webcomic-modal');
+
+                $webcomicmodal.find('.header').html(link.title);
+                $webcomicmodal.find('a').attr('href', link.url);
+                $webcomicmodal.find('img').attr('src', link.content_url);
+                $webcomicmodal.modal({
                     onVisible: function () {
-                        $("#webcomic-modal").modal("refresh");
+                        $webcomicmodal.modal("refresh");
                     }
                 }).modal('show');
 

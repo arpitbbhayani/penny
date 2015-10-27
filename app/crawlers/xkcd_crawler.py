@@ -31,15 +31,23 @@ class XkcdComic():
 
         for anchor in anchors:
             url = urlparse.urljoin(base_url, anchor.get('href'))
-
             title = anchor.text
 
+            page = requests.get(url)
+            tree = html.fromstring(page.text)
+
+            content_url = tree.xpath('//*[@id="comic"]//img/@src')[0]
+            content_type = 'image'
+
             if url not in urls:
-                print url,title
+                print url, title, content_url, content_type
                 content.append({
                     'url': url,
-                    'title': title
+                    'title': title,
+                    'content_url': content_url,
+                    'content_type': content_type
                 })
                 urls.add(url)
+                break
 
         return content

@@ -61,9 +61,9 @@ class WebcomicDao():
         """
         comic = self.db.webcomics.find_one({
             '_id': comic_id
-        },{'links.url' : 1})
+        },{'links' : 1})
 
-        return [link.get('url') for link in comic.get('links')]
+        return [link for link in comic.get('links')]
 
 
     def get_all_comics_meta_info(self):
