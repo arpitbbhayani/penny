@@ -162,12 +162,23 @@ $(document).ready(function() {
 
                 $webcomicmodal.find('.header').html(link.title);
                 $webcomicmodal.find('a').attr('href', link.url);
-                $webcomicmodal.find('img').attr('src', link.content_url);
-                $webcomicmodal.modal({
-                    onVisible: function () {
-                        $webcomicmodal.modal("refresh");
-                    }
-                }).modal('show');
+
+                var showModal = true;
+                if (link.content_type == 'image') {
+                    $webcomicmodal.find('img').attr('src', link.content_url);
+                }
+                else {
+                    showModal = false;
+                    uiModules.showError('Unsuported content_type ' + link.content_type);
+                }
+
+                if( showModal ) {
+                    $webcomicmodal.modal({
+                        onVisible: function () {
+                            $webcomicmodal.modal("refresh");
+                        }
+                    }).modal('show');
+                }
 
             }
             else if(targetType === 'astro') {
