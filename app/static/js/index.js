@@ -167,6 +167,9 @@ $(document).ready(function() {
                 if (link.content_type == 'image') {
                     $webcomicmodal.find('img').attr('src', link.content_url);
                 }
+                else if (link.content_type == 'page') {
+                    alert('Page found');
+                }
                 else {
                     showModal = false;
                     uiModules.showError('Unsuported content_type ' + link.content_type);
@@ -174,6 +177,8 @@ $(document).ready(function() {
 
                 if( showModal ) {
                     $webcomicmodal.modal({
+                        context: 'html',
+                        observeChanges: true,
                         onVisible: function () {
                             $webcomicmodal.modal("refresh");
                         }

@@ -14,11 +14,11 @@ class XkcdComic():
         {
             'title': '',
             'url': '',
+            'content_url': '',
+            'content_type': ''
         }
-        and the ones that are not present in `existing_urls`
+        and the ones that are not present in `urls` : set
         """
-        urls = set(urls)
-
         # Parse
         base_url = urlparse.urljoin(self.url, '/')
 
@@ -36,8 +36,14 @@ class XkcdComic():
             page = requests.get(url)
             tree = html.fromstring(page.text)
 
-            content_url = tree.xpath('//*[@id="comic"]//img/@src')[0]
-            content_type = 'image'
+            images = tree.xpath('//*[@id="comic"]//img/@src')
+
+            if len(images) == 0:
+                content_url = url
+                content_type = 'page'
+            else:
+                content_url = tree.xpath('//*[@id="comic"]//img/@src')[0]
+                content_type = 'image'
 
             if url not in urls:
                 print url, title, content_url, content_type
@@ -48,6 +54,5 @@ class XkcdComic():
                     'content_type': content_type
                 })
                 urls.add(url)
-                break
 
         return content

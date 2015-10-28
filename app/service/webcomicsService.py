@@ -41,7 +41,9 @@ def sync(comic_id):
         raise Exception('Invalid webcomic id %s' % comic_id)
 
     urls = get_comic_urls(comic_id)
-    comic_links = crawler.get_comics(urls)
+
+    only_urls = set([url.get('url') for url in urls])
+    comic_links = crawler.get_comics(only_urls)
 
     last_sync = time.time()
     links_count = len(comic_links) + len(urls)
