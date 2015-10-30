@@ -234,8 +234,7 @@ $(document).ready(function() {
         always(function() {
             $button.removeClass('disabled');
         });
-    })
-
+    });
 
     $('#astros .button').click(function(e) {
         var $astro = $(this).parent()
@@ -252,6 +251,6 @@ $(document).ready(function() {
         always(function() {
             $button.removeClass('disabled');
         });
-    })
+    });
 
 });
