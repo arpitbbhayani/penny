@@ -22,17 +22,16 @@ i.white {
 }
 
 #right-section {
-    background-color: #f8f8f8;
+    background-color: #FFF;
 }
 
 #zone {
-    overflow: scroll;
     height: 100%;
     margin-top: 70px;
 }
 
 #commands {
-    overflow: scroll;
+    height: 100%;
     margin-top: 70px;
 }
 
