@@ -7,6 +7,7 @@ from app.service import todosService
 from app.service import reminderService
 from app.service import webcomicsService
 from app.service import astrosService
+from app.service import musicService
 
 mod = Blueprint('pages', __name__, )
 
@@ -26,4 +27,9 @@ def index():
     # astros
     astros_meta = astrosService.get_astros_meta_info()
 
-    return render_template('index.html', reminders=remindersJson,  comics=comics_meta, todos=todos, astros=astros_meta)
+    # Playlists
+    playlists_meta = musicService.get_playlists_meta_info()
+
+    return render_template('index.html', reminders=remindersJson,  \
+                    comics=comics_meta, todos=todos, astros=astros_meta, \
+                    playlists=playlists_meta )

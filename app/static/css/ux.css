@@ -1,3 +1,11 @@
+/*
+ * Colors
+ */
+
+.perfect-pink {
+    color: rgba(255, 0, 196, 0.74) !important;
+}
+
 body {
     background-color: #FFF;
     word-wrap: break-word;

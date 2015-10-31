@@ -1,0 +1,25 @@
+<div class="column playlist" id={{playlist.id}}>
+    <p class="ui right floated tiny header">
+        <i class="delete grey link icon delete-playlist"></i>
+    </p>
+    <a class="ui left floated grey header" href="/">
+        {{playlist.name}}
+    </a>
+    <div class="ui clearing divider"></div>
+    <p>Last updated at <i>{{playlist.updated_at}}</i></p>
+    <div class="ui form">
+        <div class="field">
+            <label>Paste youtube link below to add</label>
+            <div class="ui action input youtube-link">
+                <input type="text" placeholder="Paste youtube link here"/>
+                <button class="ui teal right labeled icon button">
+                    <i class="plus icon"></i>
+                    Add
+                </button>
+            </div>
+        </div>
+        <div class="field">
+            <a href="/music/">View all {{playlist.links_count}} videos</a>
+        </div>
+    </div>
+</div>

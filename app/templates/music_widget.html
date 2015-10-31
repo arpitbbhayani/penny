@@ -2,10 +2,48 @@
     <div class="ui basic modal" id="music-modal">
         <iframe src="" width='100%' height = '100%'></iframe>
     </div>
-    <div class="column"></div>
-    <div class="fourteen wide column">
-        <div class="content">
-            <div id="music" class="ui very relaxed vertical list">
+    <div>
+        <div class="ui form center aligned grid">
+            <div class="ui field inline">
+                <div class="ui input">
+                    <input type="text" placeholder="name" id="playlist-name">
+                </div>
+                <div id="create-playlist-button" class="ui basic teal labelled icon button">
+                    Create Playlist
+                    <i class="plus icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="ui section divider"></div>
+        <div id="music" class="ui very relaxed vertical list">
+            <div class="ui stackable two column grid playlists">
+                {% for playlist in playlists %}
+                <div class="column playlist" id={{playlist.id}}>
+                    <p class="ui right floated tiny header">
+                        <i class="delete grey link icon delete-playlist"></i>
+                    </p>
+                    <a class="ui left floated grey header" href="/">
+                        {{playlist.name}}
+                    </a>
+                    <div class="ui clearing divider"></div>
+                    <p>Last updated at <i class="update-field">{{playlist.updated_at}}</i></p>
+                    <div class="ui form">
+                        <div class="field">
+                            <label>Paste youtube link below to add</label>
+                            <div class="ui action input youtube-link">
+                                <input type="text" placeholder="Paste youtube link here"/>
+                                <button class="ui teal right labeled icon button">
+                                    <i class="plus icon"></i>
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <a href="/music/">View all <span class="links-count">{{playlist.links_count}}</span> videos</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

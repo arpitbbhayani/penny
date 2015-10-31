@@ -253,4 +253,72 @@ $(document).ready(function() {
         });
     });
 
+
+    $('#create-playlist-button').click(function(e) {
+        var $playlist_name = $('#playlist-name');
+        var name = $playlist_name.val();
+
+        if(!name) {
+            uiModules.showError('Playlist name cannot be empty');
+            return;
+        }
+
+        name = name.trim();
+
+        $.post('/music/playlist/create', {name:name}, function(resp) {
+            if(resp.error) {
+                uiModules.showError(resp.error);
+                return;
+            }
+            $('#music .playlists').append(resp.html);
+            $playlist_name.val(null);
+        });
+    });
+
+    $('#music').on('click', 'i.delete-playlist', function(e) {
+        var $playlist_element = $(this).parents('div');
+        var playlist_id = $playlist_element.attr('id');
+
+        $.post('/music/playlist/delete', {id:playlist_id}, function(resp) {
+            if(resp.error) {
+                uiModules.showError(resp.error);
+                return;
+            }
+            if(resp.resp) {
+                $('#' + playlist_id).remove();
+                uiModules.notify('Playlist deleted successfully');
+            }
+            else {
+                uiModules.showError('Playlist not deleted');
+            }
+        })
+    });
+
+    $('#music').on('click', '.youtube-link button', function(e) {
+        var $button = $(this);
+        var $link_input = $(this).siblings('input');
+        var link = $link_input.val();
+        if(!link) {
+            $link_input.parent().addClass('error');
+            uiModules.showError('No link found');
+            return;
+        }
+        var playlist_id = $link_input.parents('div.playlist').attr('id');
+        var $playlist_element = $('#' + playlist_id);
+
+        $button.addClass('loading');
+
+        $.post('/music/playlist/'+ playlist_id +'/add', {link: link, site: 'youtube'}, function(resp) {
+            if(resp.error) {
+                uiModules.showError(resp.error);
+                return;
+            }
+
+            $link_input.val(null);
+            $button.removeClass('loading');
+            $playlist_element.find('.update-field').text(resp.resp.updated_at);
+            $playlist_element.find('.links-count').text(resp.resp.links_count)
+        });
+    });
+
 });
