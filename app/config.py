@@ -22,3 +22,8 @@ XKCD_CRAWLER_URL = 'http://xkcd.com/archive/'
 QUARKS_CRAWLER_URL = [
     'http://www.fromquarkstoquasars.com/post-sitemap1.xml'
 ]
+
+
+# Music
+
+GOOGLE_SERVER_API_KEY = 'AIzaSyB2m4zXyCMv6MRgyjThgamr-sxX5b3MBVc'

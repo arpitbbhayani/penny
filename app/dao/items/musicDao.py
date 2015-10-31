@@ -20,6 +20,7 @@ class MusicDao():
         except errors.DuplicateKeyError, e:
             return 'Playlist "%s", already exists' % initial_data.get('name'), None
 
+        initial_data['id'] = playlist_id
         initial_data['updated_at'] = readable.from_ts(initial_data['updated_at'])
         return None, initial_data
 
@@ -56,7 +57,7 @@ class MusicDao():
 
 
     def add_links_to_playlist(self, playlist_id, links):
-        ret = self.db.astros.update({
+        ret = self.db.music.update({
             '_id': playlist_id
         }, {
             '$pushAll': {

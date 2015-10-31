@@ -6,7 +6,7 @@
         {{playlist.name}}
     </a>
     <div class="ui clearing divider"></div>
-    <p>Last updated at <i>{{playlist.updated_at}}</i></p>
+    <p>Last updated at <i class="update-field">{{playlist.updated_at}}</i></p>
     <div class="ui form">
         <div class="field">
             <label>Paste youtube link below to add</label>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="field">
-            <a href="/music/">View all {{playlist.links_count}} videos</a>
+            <a href="/music/playlist/{{playlist.id}}">View all <span class="links-count">{{playlist.links_count}}</span> videos</a>
         </div>
     </div>
 </div>

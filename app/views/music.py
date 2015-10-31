@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from flask import request
+from flask import request, render_template
 from flask import url_for, make_response, jsonify
 from flask_restful import reqparse
 
@@ -9,6 +9,12 @@ from flask import render_template
 from app.service import musicService
 
 mod = Blueprint('music', __name__, )
+
+
+@mod.route('/playlist/<playlist_id>', methods=["GET"])
+def get_playlist(playlist_id):
+    error, playlist = musicService.get_playlist(playlist_id)
+    return render_template('playlist.html', error=error, playlist=playlist)
 
 
 @mod.route('/playlist/<playlist_id>/add', methods=["POST"])

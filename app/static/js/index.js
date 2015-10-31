@@ -303,8 +303,10 @@ $(document).ready(function() {
             uiModules.showError('No link found');
             return;
         }
-        var playlist_id = $link_input.parents('div.playlist').attr('id');
+        var playlist_id = $button.parents('div.playlist').attr('id');
         var $playlist_element = $('#' + playlist_id);
+
+        console.log('ID : ' + playlist_id);
 
         $button.addClass('loading');
 
@@ -313,11 +315,11 @@ $(document).ready(function() {
                 uiModules.showError(resp.error);
                 return;
             }
-
-            $link_input.val(null);
-            $button.removeClass('loading');
             $playlist_element.find('.update-field').text(resp.resp.updated_at);
             $playlist_element.find('.links-count').text(resp.resp.links_count)
+        }).always(function(){
+            $link_input.val(null);
+            $button.removeClass('loading');
         });
     });
 
