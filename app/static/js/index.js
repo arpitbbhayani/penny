@@ -253,4 +253,8 @@ $(document).ready(function() {
         });
     });
 
+    $('#auth-youtube-button').click(function(e) {
+        window.open('/auth/google', '_blank');
+    });
+
 });
