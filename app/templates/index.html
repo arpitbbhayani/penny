@@ -1,76 +1,7 @@
 {% extends "boilerplate.html" %}
 
 {% block content %}
-<div class="ui menu animated slideInDown fixed" id="header">
-    <form id="wish-form" class="ui fluid form">
-        <div class="fields">
-            <div class="three wide field">
-                <h1>Penny</h1>
-            </div>
-            <div class="ten wide field">
-                <div class="ui fluid input field inline">
-                    <input type="text" id="wish" name="wish" placeholder="How may I help you?" autocomplete="off">
-                </div>
-            </div>
-            <div class="four wide field">
-            </div>
-        </div>
-        <input type="submit" style="display: none;">
-    </form>
-</div>
-<div id="error-zone" class="ui top sidebar">
-    <div id="error-msg" class="ui negative message header large"></div>
-</div>
-<div id="alert-zone" class="ui top sidebar">
-    <div id="alert-msg" class="ui positive message header large"></div>
-</div>
-
-<div class="ui grid">
-    <div class="sixteen wide column" id="left-section">
-        <div id="zone">
-            <div class="ui secondary pointing menu">
-                <a class="active item teal" data-tab="todo">
-                    Todo
-                </a>
-                <a class="item teal" data-tab="reminder">
-                    Reminder
-                </a>
-                <a class="item teal" data-tab="webcomics">
-                    Webcomics
-                </a>
-                <a class="item teal" data-tab="astro">
-                    Astronomy
-                </a>
-                <a class="item teal" data-tab="music">
-                    Music
-                </a>
-            </div>
-            <div class="ui active tab segment basic"  data-tab="todo">
-                {% include 'todo_widget.html' %}
-            </div>
-            <div class="ui tab segment basic"  data-tab="reminder">
-                {% include 'reminder_widget.html' %}
-            </div>
-            <div class="ui tab segment basic"  data-tab="webcomics">
-                {% include 'webcomics_widget.html' %}
-            </div>
-            <div class="ui tab segment basic"  data-tab="astro">
-                {% include 'astro_widget.html' %}
-            </div>
-            <div class="ui tab segment basic"  data-tab="music">
-                {% include 'music_widget.html' %}
-            </div>
-        </div>
-    </div>
-    <!-- <div class="four wide column" id="right-section">
-        <div id="commands" class="fluid"></div>
-    </div> -->
-</div>
 {% endblock %}
 
 {% block head %}
-<script src="/static/js/lib/markdown-it.min.js"></script>
-
-<script src="/static/js/index.js"></script>
-<script src="/static/js/clock.js"></script>
 {% endblock %}

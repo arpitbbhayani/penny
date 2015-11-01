@@ -1,9 +1,8 @@
+{% extends "boilerplate.html" %}
+
+{% block content %}
 <div class="row">
-    <div class="ui basic modal" id="astro-modal">
-        <iframe src="" width='100%' height = '100%'></iframe>
-    </div>
-    <div class="column"></div>
-    <div class="fourteen wide column">
+    <div class="sixteen wide column">
         <div class="content">
             <div id="astros" class="ui very relaxed vertical list">
                 {% for astro in astros %}
@@ -22,3 +21,8 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block head %}
+{% endblock %}

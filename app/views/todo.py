@@ -14,6 +14,12 @@ from bson import ObjectId
 
 mod = Blueprint('todos', __name__, )
 
+@mod.route('/', methods=["GET"])
+def index():
+    todos = todosService.get_todos()
+    return render_template('pages/todo_widget.html', todos=todos)
+
+
 @mod.route('/create', methods=['POST'])
 def create():
     todoObj = todosService.create_todo('Default Name')

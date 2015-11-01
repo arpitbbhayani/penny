@@ -10,6 +10,12 @@ from app.service import musicService
 
 mod = Blueprint('music', __name__, )
 
+@mod.route('/', methods=["GET"])
+def index():
+    # Playlists
+    playlists_meta = musicService.get_playlists_meta_info()
+    return render_template('pages/music_widget.html', playlists=playlists_meta)
+
 
 @mod.route('/playlist/<playlist_id>', methods=["GET"])
 def get_playlist(playlist_id):

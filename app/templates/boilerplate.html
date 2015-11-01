@@ -25,8 +25,75 @@
 
 <body>
     <div class="overlay">
-        {% block content %}{% endblock %}
+        <div class="ui menu fixed" id="header">
+            <form id="wish-form" class="ui fluid form">
+                <div class="fields">
+                    <div class="three wide field">
+                        <a href="/" style="text-decoration: none;"><h1>Penny</h1></a>
+                    </div>
+                    <div class="ten wide field">
+                        <div class="ui fluid input field inline">
+                            <input type="text" id="wish" name="wish" placeholder="How may I help you?" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="four wide field">
+                    </div>
+                </div>
+                <input type="submit" style="display: none;">
+            </form>
+        </div>
+        <div id="error-zone" class="ui top sidebar">
+            <div id="error-msg" class="ui negative message header large"></div>
+        </div>
+        <div id="alert-zone" class="ui top sidebar">
+            <div id="alert-msg" class="ui positive message header large"></div>
+        </div>
+
+        <div class="ui basic fullscreen modal" id="webcomic-modal">
+            <i class="close icon white"></i>
+            <div class="header">Header</div>
+            <div class="ui basic segment">
+                <a href="" target="_blank">
+                    <img class="ui centered image" src="">
+                </a>
+            </div>
+        </div>
+
+        <div class="ui basic modal" id="astro-modal">
+            <iframe src="" width='100%' height = '100%'></iframe>
+        </div>
+
+        <div class="ui grid">
+            <div class="sixteen wide column" id="left-section">
+                <div id="zone">
+                    <div class="ui secondary pointing menu">
+                        <a class="{%- if request.path == "/todos/" %}active{% endif %} item teal" href='/todos'>
+                            Todo
+                        </a>
+                        <a class="{%- if request.path == "/reminders/" %}active{% endif %} item teal" href="/reminders">
+                            Reminder
+                        </a>
+                        <a class="{%- if request.path == "/webcomics/" %}active{% endif %} item teal" href="/webcomics">
+                            Webcomics
+                        </a>
+                        <a class="{%- if request.path == "/astros/" %}active{% endif %} item teal" href="/astros">
+                            Astronomy
+                        </a>
+                        <a class="{%- if request.path == "/music/" %}active{% endif %} item teal" href="/music">
+                            Music
+                        </a>
+                    </div>
+                    <div class="ui basic segment">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+<head>
 {% block head %}{% endblock %}
+<script src="/static/js/lib/markdown-it.min.js"></script>
+<script src="/static/js/index.js"></script>
+</head>
 </html>
