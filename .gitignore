@@ -6,3 +6,4 @@ penenv
 *lex.yy.c
 *.tab.*
 *.output
+app/config.py
