@@ -51,7 +51,7 @@
 
         <div class="ui basic fullscreen modal" id="webcomic-modal">
             <i class="close icon white"></i>
-            <div class="header">Header</div>
+            <div class="header"></div>
             <div class="ui basic segment">
                 <a href="" target="_blank">
                     <img class="ui centered image" src="">
@@ -62,6 +62,24 @@
         <div class="ui basic modal" id="astro-modal">
             <iframe src="" width='100%' height = '100%'></iframe>
         </div>
+
+        <div class="ui basic fullscreen modal" id="music-modal">
+            <i class="close icon white"></i>
+            <div class="header"></div>
+            <div class="ui one column stackable center aligned page grid">
+                <div class="column twelve wide">
+                    <div class="fluid" id="music-playarea">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        var music_player;
+        function onYouTubePlayerAPIReady() {
+            music_player = new YT.Player('music-playarea', {});
+        }
+        </script>
 
         <div class="ui grid">
             <div class="sixteen wide column" id="left-section">
@@ -95,5 +113,6 @@
 {% block head %}{% endblock %}
 <script src="/static/js/lib/markdown-it.min.js"></script>
 <script src="/static/js/index.js"></script>
+<script src="http://www.youtube.com/player_api"></script>
 </head>
 </html>

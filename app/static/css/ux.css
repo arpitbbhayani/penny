@@ -73,7 +73,7 @@ i.white {
 
 }
 
-#webcomic-modal {
+#music-modal, #webcomic-modal {
     margin-top: 20px !important;
     position: static;
 }

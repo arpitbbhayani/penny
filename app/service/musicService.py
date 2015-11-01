@@ -1,4 +1,5 @@
 import time
+import random
 
 from app import config
 from app.utils import readable
@@ -31,9 +32,9 @@ def delete_playlist(playlist_id):
     return error, is_deleted
 
 
-def get_urls_in_playlist(playlist_id):
+def get_links_in_playlist(playlist_id):
     dao = MusicDao()
-    urls = dao.get_urls_in_playlist(playlist_id)
+    urls = dao.get_link_in_playlist(playlist_id)
     return urls
 
 
@@ -45,7 +46,7 @@ def add_links_to_playlist(playlist_id, link, site):
     else:
         raise Exception('Invalid site id %s' % site)
 
-    existing_video_urls = get_urls_in_playlist(playlist_id)
+    existing_video_urls = [link.get('url') for link in get_links_in_playlist(playlist_id)]
 
     links = []
 
@@ -70,3 +71,9 @@ def get_playlists_meta_info():
     dao = MusicDao()
     playlists_meta = dao.get_all_playlists_meta_info()
     return playlists_meta
+
+
+def get_random_link(playlist_id):
+    links = get_links_in_playlist(playlist_id)
+    print links
+    return None, random.choice(links)

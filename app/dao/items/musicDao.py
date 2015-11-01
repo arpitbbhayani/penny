@@ -45,15 +45,15 @@ class MusicDao():
         return ret
 
 
-    def get_urls_in_playlist(self, playlist_id):
+    def get_link_in_playlist(self, playlist_id):
         """
         Returns list of urls
         """
         playlist = self.db.music.find_one({
             '_id': playlist_id
-        },{'links.url' : 1})
+        },{'links' : 1})
 
-        return [link.get('url') for link in playlist.get('links')]
+        return [link for link in playlist.get('links')]
 
 
     def add_links_to_playlist(self, playlist_id, links):

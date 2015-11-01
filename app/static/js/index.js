@@ -306,8 +306,6 @@ $(document).ready(function() {
         var playlist_id = $button.parents('div.playlist').attr('id');
         var $playlist_element = $('#' + playlist_id);
 
-        console.log('ID : ' + playlist_id);
-
         $button.addClass('loading');
 
         $.post('/music/playlist/'+ playlist_id +'/add', {link: link, site: 'youtube'}, function(resp) {
@@ -321,6 +319,36 @@ $(document).ready(function() {
             $link_input.val(null);
             $button.removeClass('loading');
         });
+    });
+
+    $('#music').on('click', '.random-music', function(e) {
+        var $button = $(this);
+        var playlist_id = $button.parents('div.playlist').attr('id');
+        var $playlist_element = $('#' + playlist_id);
+
+        $.get('/music/playlist/'+ playlist_id +'/random', function(resp) {
+
+            var video_id = resp.resp.video_id;
+            var $musicmodal = $('#music-modal');
+
+            $musicmodal.find('.header').html(resp.resp.title);
+
+            $musicmodal.modal({
+                context: 'html',
+                observeChanges: true,
+                onVisible: function () {
+                    $musicmodal.modal("refresh");
+                    music_player.loadVideoById(video_id, 0, "large")
+                },
+                onHidden: function() {
+                    music_player.stopVideo();
+                }
+            }).modal('show');
+
+        }).fail(function(response) {
+            uiModules.showError(response.responseText);
+        })
+
     });
 
 });

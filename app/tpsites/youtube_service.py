@@ -30,11 +30,13 @@ def get_channel_id(url):
 
 
 def crawl_playlist(playlist_id):
+
+    print 'Crawling playlist:', playlist_id
+
     videos = []
+    next_page_token = None
 
     while True:
-
-        next_page_token = None
 
         u = get_playlist_api_url(playlist_id, next_page_token)
         r = requests.get(u)
@@ -47,13 +49,16 @@ def crawl_playlist(playlist_id):
             title = item['snippet']['title']
             thumbnail = item['snippet']['thumbnails']['default']['url']
 
+            print 'Adding video : ', url
+
             videos.append({
                 'url': url,
                 'title': title,
                 'thumbnail': thumbnail,
+                'video_id': video_id
             })
 
-        next_page_token = j.get('nextPageToken')
+            next_page_token = j.get('nextPageToken')
 
         if not next_page_token:
             break
@@ -107,7 +112,8 @@ def get_videos(url):
         videos.append({
             'url': url,
             'title': title,
-            'thumbnail': thumbnail
+            'thumbnail': thumbnail,
+            'video_id': video_id
         })
 
     return videos

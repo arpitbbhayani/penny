@@ -35,6 +35,13 @@ def add_links_to_playlist(playlist_id):
     return jsonify(resp=meta_info, error=error)
 
 
+@mod.route('/playlist/<playlist_id>/random', methods=["GET"])
+def get_random_from_playlist(playlist_id):
+    error, link_info = musicService.get_random_link(playlist_id)
+    return jsonify(resp=link_info, error=error)
+
+
+
 @mod.route('/playlist/create', methods=["POST"])
 def create_playlist():
     parser = reqparse.RequestParser()
