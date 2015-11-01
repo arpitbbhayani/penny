@@ -34,8 +34,8 @@ def delete_playlist(playlist_id):
 
 def get_links_in_playlist(playlist_id):
     dao = MusicDao()
-    urls = dao.get_link_in_playlist(playlist_id)
-    return urls
+    links = dao.get_link_in_playlist(playlist_id)
+    return None, links
 
 
 def add_links_to_playlist(playlist_id, link, site):
@@ -46,7 +46,8 @@ def add_links_to_playlist(playlist_id, link, site):
     else:
         raise Exception('Invalid site id %s' % site)
 
-    existing_video_urls = [link.get('url') for link in get_links_in_playlist(playlist_id)]
+    error, existing_video_links = get_links_in_playlist(playlist_id)
+    existing_video_urls = [link.get('url') for link in existing_video_links]
 
     links = []
 
@@ -74,6 +75,5 @@ def get_playlists_meta_info():
 
 
 def get_random_link(playlist_id):
-    links = get_links_in_playlist(playlist_id)
-    print links
-    return None, random.choice(links)
+    error, links = get_links_in_playlist(playlist_id)
+    return error, random.choice(links)

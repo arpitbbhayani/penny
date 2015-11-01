@@ -1,3 +1,5 @@
+import random
+
 from flask import Blueprint
 
 from flask import request, render_template
@@ -40,6 +42,12 @@ def get_random_from_playlist(playlist_id):
     error, link_info = musicService.get_random_link(playlist_id)
     return jsonify(resp=link_info, error=error)
 
+
+@mod.route('/playlist/<playlist_id>/all', methods=["GET"])
+def all_from_playlist_randomly(playlist_id):
+    error, links = musicService.get_links_in_playlist(playlist_id)
+    random.shuffle(links)
+    return jsonify(resp=links, error=error)
 
 
 @mod.route('/playlist/create', methods=["POST"])

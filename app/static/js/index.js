@@ -327,7 +327,6 @@ $(document).ready(function() {
         var $playlist_element = $('#' + playlist_id);
 
         $.get('/music/playlist/'+ playlist_id +'/random', function(resp) {
-
             var video_id = resp.resp.video_id;
             var $musicmodal = $('#music-modal');
 
@@ -339,6 +338,43 @@ $(document).ready(function() {
                 onVisible: function () {
                     $musicmodal.modal("refresh");
                     music_player.loadVideoById(video_id, 0, "large")
+                },
+                onHidden: function() {
+                    music_player.stopVideo();
+                }
+            }).modal('show');
+
+        }).fail(function(response) {
+            uiModules.showError(response.responseText);
+        })
+
+    });
+
+
+    $('#music').on('click', '.full-playlist', function(e) {
+        var $button = $(this);
+        var playlist_id = $button.parents('div.playlist').attr('id');
+        var $playlist_element = $('#' + playlist_id);
+
+        var playlist_name = $playlist_element.find('a.header').text();
+
+        $.get('/music/playlist/'+ playlist_id +'/all', function(resp) {
+
+            var $musicmodal = $('#music-modal');
+
+            $musicmodal.find('.header').html(resp.resp.title);
+
+            $musicmodal.modal({
+                context: 'html',
+                observeChanges: true,
+                onVisible: function () {
+                    $musicmodal.modal("refresh");
+                    var ids = [];
+                    for( var i = 0; i < 100 && i < resp.resp.length ; i++ ) {
+                        var video = resp.resp[i];
+                        ids.push(video.video_id);
+                    }
+                    music_player.loadPlaylist(ids);
                 },
                 onHidden: function() {
                     music_player.stopVideo();

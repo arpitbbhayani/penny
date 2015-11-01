@@ -2,9 +2,6 @@
 
 {% block content %}
 <div class="row">
-    <div class="ui basic modal" id="music-modal">
-        <iframe src="" width='100%' height = '100%'></iframe>
-    </div>
     <div>
         <div class="ui form center aligned grid">
             <div class="ui field inline">
@@ -43,6 +40,7 @@
                         </div>
                         <div class="field">
                             <div class="ui basic teal button random-music">Play random music video</div>
+                            <div class="ui basic teal button full-playlist">Play complete playlist randomly</div>
                         </div>
                         <div class="field">
                             <a href="/music/playlist/{{playlist.id}}">View all <span class="links-count">{{playlist.links_count}}</span> videos</a>

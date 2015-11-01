@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/static/css/animate.min.css">
 
     <!-- JS Libs -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
     <script src="/static/js/lib/js.cookie.js"></script>
     <script src="/static/js/lib/jquery-1.11.3.min.js"></script>
     <script src="/static/semantic/dist/semantic.min.js"></script>
@@ -64,21 +66,34 @@
         </div>
 
         <div class="ui basic fullscreen modal" id="music-modal">
-            <i class="close icon white"></i>
-            <div class="header"></div>
-            <div class="ui one column stackable center aligned page grid">
-                <div class="column twelve wide">
-                    <div class="fluid" id="music-playarea">
+            <div class="ui basic" id="music-modal">
+                <div class="ui one column stackable center aligned page grid">
+                    <div class="column twelve wide">
+                        <div id="music-playarea"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <script>
-        var music_player;
-        function onYouTubePlayerAPIReady() {
-            music_player = new YT.Player('music-playarea', {});
-        }
+        var music_player = null;
+        function onYouTubeIframeAPIReady() {
+            music_player = new YT.Player('music-playarea', {
+                height: '390',
+                width: '640',
+                playerVars: { 'autoplay': 1 },
+                events: {
+                    'onReady': function(event) {
+                        event.target.pauseVideo();
+                        music_player.addEventListener('onStateChange', function(e) {
+                            if( e.data == 5 ) {
+                                event.target.playVideo();
+                            }
+                        });
+                    },
+                }
+            });
+        };
         </script>
 
         <div class="ui grid">
@@ -113,6 +128,5 @@
 {% block head %}{% endblock %}
 <script src="/static/js/lib/markdown-it.min.js"></script>
 <script src="/static/js/index.js"></script>
-<script src="http://www.youtube.com/player_api"></script>
 </head>
 </html>
