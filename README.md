@@ -32,6 +32,13 @@ The procedure of installing `Penny` is pretty simple. Just follow the steps belo
 ```
 $ git clone https://github.com/arpitbbhayani/penny.git
 $ cd penny
+```
+
+Now, you need to create the `config.py` file. In order to create this file simply copy `app/config.py.0` to `app/config.py`.
+
+1. Edit `GOOGLE_SERVER_API_KEY` and set your own api key here.
+
+```
 $ ./install.sh
 ```
 
@@ -42,7 +49,7 @@ $ ./start.sh
 
 Say Hi to `Penny` from your favourite browser
 ```
-http://localhot:5000
+http://localhot:10101
 ```
 
 ## How to contribute
