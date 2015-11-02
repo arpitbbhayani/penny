@@ -14,6 +14,8 @@ mod = Blueprint('pages', __name__, )
 @mod.route('/', methods=["GET", "POST"])
 def index():
 
+    print "INDEX HIT"
+
     # reminders
     reminders = reminderService.getAllReminders()
     remindersJson = [r.jsonify() for r in reminders]
