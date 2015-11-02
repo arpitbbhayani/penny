@@ -97,7 +97,7 @@
         </script>
 
         <div class="ui grid">
-            <div class="sixteen wide column" id="left-section">
+            <div class="twelve wide column" id="left-section">
                 <div id="zone">
                     <div class="ui secondary pointing menu">
                         <a class="{%- if request.path == "/todos/" %}active{% endif %} item teal" href='/todos'>
@@ -118,6 +118,17 @@
                     </div>
                     <div class="ui basic segment">
                         {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column" id="right-section">
+                <div id="news-stream" class="ui class header">
+                    <div class="ui secondary pointing menu">
+                        <a class="active tab item red" data-tab="toi">
+                            Times Of India
+                        </a>
+                    </div>
+                    <div class="ui tab basic segment active" data-tab="toi">
                     </div>
                 </div>
             </div>

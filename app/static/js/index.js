@@ -9,7 +9,7 @@ $(document).ready(function() {
     var todoNotificationIcon = $('#todos .notification-area > i');
     var todoNotificationText = $('#todos .notification-area > span');
 
-    $('#zone .menu .item').tab({history:false});
+    $('#news-stream .menu .item').tab({history:false});
     $('.demo.menu .item').tab({history:false});
 
     $('#todos').ready(function() {
