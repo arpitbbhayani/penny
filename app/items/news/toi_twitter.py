@@ -4,10 +4,10 @@ from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 
-consumer_key = '9KHrtTbzWZtyEHsMK6RysWSvy'
-consumer_secret = 'hWJXiqe3Pxf7fxLeg7GbyGldyHKva7A49PNMwFntZe7vb3ocxe'
-access_token = '98808847-rXCvDK0lUBcnHPXu3kFXfs4zl2puvYj4pRgFOZGg5'
-access_secret = '19yYGloF7gojnF2KdI5TGS4L0SRfzvD13fBfN76TDsCQb'
+consumer_key = 'xxxxxxxxxxx'
+consumer_secret = 'xxxxxxxxxxx'
+access_token = 'xxxxxxxxxxx'
+access_secret = 'xxxxxxxxxxx'
 
 news_handles = {
     'timesofinda': 'toi'
