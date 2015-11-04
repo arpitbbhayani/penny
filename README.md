@@ -2,6 +2,14 @@
 
 I am `Penny`. The ultimate aim of my life is to serve the Earthians. You can ask for anything you want and I will try my best to fullfil your wishes.
 
+Currently I have the following
+
+1. Todos
+2. Reminders
+3. Astro articles
+4. Xkcd comics
+5. Youtube custom playlists
+
 ## Table of contents
 
 * [Installation](#installation)
