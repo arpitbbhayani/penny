@@ -10,6 +10,9 @@ Currently I have the following
 4. Xkcd comics
 5. Youtube custom playlists
 
+* To read a random comic from Xkcd simply type "comic"
+* To read a random astronomy article type "astro"
+
 ## Table of contents
 
 * [Installation](#installation)
