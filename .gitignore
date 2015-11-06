@@ -7,3 +7,4 @@ penenv
 *.tab.*
 *.output
 app/config.py
+*.tmp
