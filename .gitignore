@@ -8,3 +8,4 @@ penenv
 *.output
 app/config.py
 *.tmp
+*.db
