@@ -7,7 +7,7 @@
         <div id="todos" class="content">
             <div class="ui grid">
                 <div class="four wide column">
-                    <div class="ui vertical tabular fluid demo menu">
+                    <div class="ui vertical tabular fluid todo menu">
                         <a class="item" id="new-todo"><i class="add icon"></i>New Todo</a>
                         {% for todo in todos %}
                         <a class="item" data-tab="{{todo.id}}">{{ todo.name }}</a>
