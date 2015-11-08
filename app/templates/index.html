@@ -1,9 +1,9 @@
 {% extends "raw.html" %}
 
 {% block body %}
-<div class="ui fixed large menu" style="background: transparent;color: #FFF;" id="header">
+<div class="ui fixed large menu" style="background: transparent;">
     <div class="penny-header">
-        <a href="/" style="text-decoration: none;"><h1>Penny</h1></a>
+        <a href="/"><h2>Penny</h2></a>
     </div>
 </div>
 <div id="large-header" class="large-header">
@@ -11,16 +11,16 @@
     <div class="ui middle aligned center aligned grid" id="landing">
         <div class="column">
             <div class="ui inverted secondary pointing menu top">
-                <a class="active item" data-tab="signin"><h2>Sign In</h2></a>
-                <a class="item" data-tab="signup"><h2>Sign Up</h2></a>
+                <a class="active item" data-tab="signin"><h3>Sign In</h3></a>
+                <a class="item" data-tab="signup"><h3>Sign Up</h3></a>
             </div>
             <div class="ui active tab" data-tab="signin">
-                <form class="ui large form">
+                <form class="ui large form" method="POST">
                     <div class="ui stacked basic segment">
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="user white icon"></i>
-                                <input type="text" placeholder="Username">
+                                <input type="text" name="username" placeholder="Email">
                             </div>
                         </div>
                         <div class="field">
@@ -31,8 +31,18 @@
                         </div>
                         <input type="submit" class="ui fluid large teal submit button" value="Sign In" />
                     </div>
-                    <div class="ui error message"></div>
                 </form>
+                <div class="error">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class="flashes">
+                                {% for message in messages %}
+                                <li><h4>{{ message }}</h4></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
             <div class="ui tab" data-tab="signup">
             </div>

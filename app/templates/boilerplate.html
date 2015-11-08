@@ -2,12 +2,24 @@
 
 {% block body %}
 <div class="overlay">
-    <div class="ui menu fixed" id="header">
-        <form id="wish-form" class="ui fluid form">
+    <div class="ui fixed borderless menu">
+        <div class="penny-header">
+            <a href="/"><h2>Penny</h2></a>
+        </div>
+        <div class="right item">
+            <div class="ui buttons">
+                <a class="basic button ui blue" href="/configure">
+                    <i class="icon configure"></i>
+                    Configure
+                </a>
+                <a class="basic button ui orange" href="/logout">
+                    <i class="icon arrow right"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+        <!-- <form id="wish-form" class="ui fluid form">
             <div class="fields">
-                <div class="three wide field">
-                    <a href="/" style="text-decoration: none;"><h1>Penny</h1></a>
-                </div>
                 <div class="ten wide field">
                     <div class="ui fluid input field inline">
                         <input type="text" id="wish" name="wish" placeholder="How may I help you?" autocomplete="off">
@@ -17,7 +29,7 @@
                 </div>
             </div>
             <input type="submit" style="display: none;">
-        </form>
+        </form> -->
     </div>
     <div id="error-zone" class="ui top sidebar">
         <div id="error-msg" class="ui negative message header large"></div>

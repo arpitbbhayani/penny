@@ -1,7 +1,12 @@
+from bson import ObjectId
 from flask import Blueprint
 
-from flask import render_template, request, redirect
-from flask import url_for, make_response
+from flask import render_template, request, redirect, flash
+from flask import url_for, make_response, get_flashed_messages
+
+from flask_restful import reqparse
+
+from flask.ext.login import current_user, login_user, logout_user
 
 from app.service import todosService
 from app.service import reminderService
@@ -9,27 +14,36 @@ from app.service import webcomicsService
 from app.service import astrosService
 from app.service import musicService
 
+from app.user import User
+
 mod = Blueprint('pages', __name__, )
+
 
 @mod.route('/', methods=["GET", "POST"])
 def index():
+    if request.method == 'GET':
+        if current_user.is_authenticated:
+            return render_template('boilerplate.html')
+    elif request.method == 'POST':
+        parser = reqparse.RequestParser()
+        parser.add_argument('username', type=str, help='Username', location='form')
+        parser.add_argument('password', type=str, help='Password', location='form')
+        args = parser.parse_args()
 
-    # reminders
-    reminders = reminderService.getAllReminders()
-    remindersJson = [r.jsonify() for r in reminders]
+        u = args.get('username')
+        p = args.get('password')
 
-    # todos
-    todos = todosService.get_todos()
+        user = User.get(u)
+        if (user and user.password == p):
+            login_user(user)
+            return redirect('/')
+        else:
+            flash('Username or password incorrect')
 
-    # comics
-    comics_meta = webcomicsService.get_comics_meta_info()
+    return render_template('index.html')
 
-    # astros
-    astros_meta = astrosService.get_astros_meta_info()
 
-    # Playlists
-    playlists_meta = musicService.get_playlists_meta_info()
-
-    return render_template('index.html', reminders=remindersJson,  \
-                    comics=comics_meta, todos=todos, astros=astros_meta, \
-                    playlists=playlists_meta )
+@mod.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')

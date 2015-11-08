@@ -24,19 +24,23 @@ i.white {
     color: #FFF !important;
 }
 
-.penny-header {
-    margin: 10px;
+.penny-header h2 {
+    line-height: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .penny-header a,
 .penny-header a:hover,
 .penny-header a:active {
-    color: #FFF;
+    text-decoration: none;
+    color: #00B5AD;
 }
 
-#header {
-    /*background-color: #4D394B;*/
-    background-color: #FFF;
+.flashes li {
+    color: #FF6200;
+    text-align: left;
+    list-style: none;
 }
 
 /*
