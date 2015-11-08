@@ -1,143 +1,112 @@
-<html>
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Penny</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "raw.html" %}
 
-    <link rel="icon" type="image/ico" href="/static/images/favicon.ico">
-
-    <link rel="stylesheet" href="/static/semantic/dist/semantic.min.css">
-    <link rel="stylesheet" href="/static/css/animate.min.css">
-
-    <!-- JS Libs -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
-    <script src="/static/js/lib/js.cookie.js"></script>
-    <script src="/static/js/lib/jquery-1.11.3.min.js"></script>
-    <script src="/static/semantic/dist/semantic.min.js"></script>
-
-    <script src="/static/js/uimodules.js"></script>
-
-    <!-- UX Styling -->
-
-    <link rel="stylesheet" href="/static/css/ux.css">
-
-</head>
-
-<body>
-    <div class="overlay">
-        <div class="ui menu fixed" id="header">
-            <form id="wish-form" class="ui fluid form">
-                <div class="fields">
-                    <div class="three wide field">
-                        <a href="/" style="text-decoration: none;"><h1>Penny</h1></a>
-                    </div>
-                    <div class="ten wide field">
-                        <div class="ui fluid input field inline">
-                            <input type="text" id="wish" name="wish" placeholder="How may I help you?" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="four wide field">
+{% block body %}
+<div class="overlay">
+    <div class="ui menu fixed" id="header">
+        <form id="wish-form" class="ui fluid form">
+            <div class="fields">
+                <div class="three wide field">
+                    <a href="/" style="text-decoration: none;"><h1>Penny</h1></a>
+                </div>
+                <div class="ten wide field">
+                    <div class="ui fluid input field inline">
+                        <input type="text" id="wish" name="wish" placeholder="How may I help you?" autocomplete="off">
                     </div>
                 </div>
-                <input type="submit" style="display: none;">
-            </form>
-        </div>
-        <div id="error-zone" class="ui top sidebar">
-            <div id="error-msg" class="ui negative message header large"></div>
-        </div>
-        <div id="alert-zone" class="ui top sidebar">
-            <div id="alert-msg" class="ui positive message header large"></div>
-        </div>
-
-        <div class="ui basic fullscreen modal" id="webcomic-modal">
-            <i class="close icon white"></i>
-            <div class="header"></div>
-            <div class="ui basic segment">
-                <a href="" target="_blank">
-                    <img class="ui centered image" src="">
-                </a>
-            </div>
-        </div>
-
-        <div class="ui basic modal" id="astro-modal">
-            <iframe src="" width='100%' height = '100%'></iframe>
-        </div>
-
-        <div class="ui basic fullscreen modal" id="music-modal">
-            <div class="ui basic" id="music-modal">
-                <div class="ui one column stackable center aligned page grid">
-                    <div class="column twelve wide">
-                        <div id="music-playarea"></div>
-                    </div>
+                <div class="four wide field">
                 </div>
             </div>
+            <input type="submit" style="display: none;">
+        </form>
+    </div>
+    <div id="error-zone" class="ui top sidebar">
+        <div id="error-msg" class="ui negative message header large"></div>
+    </div>
+    <div id="alert-zone" class="ui top sidebar">
+        <div id="alert-msg" class="ui positive message header large"></div>
+    </div>
+
+    <div class="ui basic fullscreen modal" id="webcomic-modal">
+        <i class="close icon white"></i>
+        <div class="header"></div>
+        <div class="ui basic segment">
+            <a href="" target="_blank">
+                <img class="ui centered image" src="">
+            </a>
         </div>
+    </div>
 
-        <script>
-        var music_player = null;
-        function onYouTubeIframeAPIReady() {
-            music_player = new YT.Player('music-playarea', {
-                height: '390',
-                width: '640',
-                playerVars: { 'autoplay': 1 },
-                events: {
-                    'onReady': function(event) {
-                        event.target.pauseVideo();
-                        music_player.addEventListener('onStateChange', function(e) {
-                            if( e.data == 5 ) {
-                                event.target.playVideo();
-                            }
-                        });
-                    },
-                }
-            });
-        };
-        </script>
+    <div class="ui basic modal" id="astro-modal">
+        <iframe src="" width='100%' height = '100%'></iframe>
+    </div>
 
-        <div class="ui grid">
-            <div class="twelve wide column" id="left-section">
-                <div id="zone">
-                    <div class="ui secondary pointing menu">
-                        <a class="{%- if request.path == "/todos/" %}active{% endif %} item teal" href='/todos'>
-                            Todo
-                        </a>
-                        <a class="{%- if request.path == "/reminders/" %}active{% endif %} item teal" href="/reminders">
-                            Reminder
-                        </a>
-                        <a class="{%- if request.path == "/webcomics/" %}active{% endif %} item teal" href="/webcomics">
-                            Webcomics
-                        </a>
-                        <a class="{%- if request.path == "/astros/" %}active{% endif %} item teal" href="/astros">
-                            Astronomy
-                        </a>
-                        <a class="{%- if request.path == "/music/" %}active{% endif %} item teal" href="/music">
-                            Music
-                        </a>
-                    </div>
-                    <div class="ui basic segment">
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
-            </div>
-            <div class="four wide column" id="right-section">
-                <div id="news-stream" class="ui class header">
-                    <div class="ui secondary pointing menu">
-                        <a class="active tab item red" data-tab="toi">
-                            Times Of India
-                        </a>
-                    </div>
-                    <div class="ui tab basic segment active" data-tab="toi">
-                    </div>
+    <div class="ui basic fullscreen modal" id="music-modal">
+        <div class="ui basic" id="music-modal">
+            <div class="ui one column stackable center aligned page grid">
+                <div class="column twelve wide">
+                    <div id="music-playarea"></div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-<head>
-{% block head %}{% endblock %}
-<script src="/static/js/lib/markdown-it.min.js"></script>
-<script src="/static/js/index.js"></script>
-</head>
-</html>
+
+    <script>
+    var music_player = null;
+    function onYouTubeIframeAPIReady() {
+        music_player = new YT.Player('music-playarea', {
+            height: '390',
+            width: '640',
+            playerVars: { 'autoplay': 1 },
+            events: {
+                'onReady': function(event) {
+                    event.target.pauseVideo();
+                    music_player.addEventListener('onStateChange', function(e) {
+                        if( e.data == 5 ) {
+                            event.target.playVideo();
+                        }
+                    });
+                },
+            }
+        });
+    };
+    </script>
+
+    <div class="ui grid">
+        <div class="twelve wide column" id="left-section">
+            <div id="zone">
+                <div class="ui secondary pointing menu">
+                    <a class="{%- if request.path == "/todos/" %}active{% endif %} item teal" href='/todos'>
+                        Todo
+                    </a>
+                    <a class="{%- if request.path == "/reminders/" %}active{% endif %} item teal" href="/reminders">
+                        Reminder
+                    </a>
+                    <a class="{%- if request.path == "/webcomics/" %}active{% endif %} item teal" href="/webcomics">
+                        Webcomics
+                    </a>
+                    <a class="{%- if request.path == "/astros/" %}active{% endif %} item teal" href="/astros">
+                        Astronomy
+                    </a>
+                    <a class="{%- if request.path == "/music/" %}active{% endif %} item teal" href="/music">
+                        Music
+                    </a>
+                </div>
+                <div class="ui basic segment">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        <div class="four wide column" id="right-section">
+            <div id="news-stream" class="ui class header">
+                <div class="ui secondary pointing menu">
+                    <a class="active tab item red" data-tab="toi">
+                        Times Of India
+                    </a>
+                </div>
+                <div class="ui tab basic segment active" data-tab="toi">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
