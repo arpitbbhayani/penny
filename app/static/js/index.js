@@ -13,6 +13,10 @@ $(document).ready(function() {
     $('.todo.menu .item').tab({history:false});
     $('.top.menu .item').tab({history:false});
 
+    $('body').on('click', '.button', function() {
+        $(this).transition('pulse');
+    })
+
     $('#todos').ready(function() {
         $.each($('#todos .segment'), function(index, $element){
             var $html, $md;

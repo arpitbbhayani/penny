@@ -24,6 +24,11 @@ i.white {
     color: #FFF !important;
 }
 
+.menu .buttons .button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .penny-header h2 {
     line-height: 60px;
     margin-left: 20px;
