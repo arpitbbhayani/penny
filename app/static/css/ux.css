@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: #FFF;
+    background-color: #000;
     word-wrap: break-word;
     max-height: 100vh;
 }
@@ -56,7 +56,7 @@ i.white {
  .large-header {
  	position: relative;
  	width: 100%;
- 	background: #111;
+ 	background: #000;
  	overflow: hidden;
  	background-size: cover;
  	background-position: center center;
