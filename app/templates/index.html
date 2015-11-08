@@ -5,17 +5,16 @@
     <div class="penny-header">
         <a href="/" style="text-decoration: none;"><h1>Penny</h1></a>
     </div>
-    <div class="right menu">
-        <a class="ui white item" style="" href="/signup">
-            Sign Up
-        </a>
-    </div>
 </div>
 <div id="large-header" class="large-header">
     <canvas id="demo-canvas"></canvas>
-    <div class="main-content">
-        <div class="ui middle aligned center aligned grid" id="landing">
-            <div class="column">
+    <div class="ui middle aligned center aligned grid" id="landing">
+        <div class="column">
+            <div class="ui inverted secondary pointing menu top">
+                <a class="active item" data-tab="signin"><h2>Sign In</h2></a>
+                <a class="item" data-tab="signup"><h2>Sign Up</h2></a>
+            </div>
+            <div class="ui active tab" data-tab="signin">
                 <form class="ui large form">
                     <div class="ui stacked basic segment">
                         <div class="field">
@@ -35,6 +34,8 @@
 
                     <div class="ui error message"></div>
                 </form>
+            </div>
+            <div class="ui tab" data-tab="signup">
             </div>
         </div>
     </div>

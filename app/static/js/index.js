@@ -10,7 +10,8 @@ $(document).ready(function() {
     var todoNotificationText = $('#todos .notification-area > span');
 
     $('#news-stream .menu .item').tab({history:false});
-    $('.demo.menu .item').tab({history:false});
+    //$('.demo.menu .item').tab({history:false});
+    $('.top.menu .item').tab({history:false});
 
     $('#todos').ready(function() {
         $.each($('#todos .segment'), function(index, $element){
