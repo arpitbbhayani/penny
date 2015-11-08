@@ -1,3 +1,12 @@
+#landing {
+    height: 100%;
+    width: 550px;
+}
+
+#landing .column {
+    max-width: 550px;
+}
+
 /*
  * Colors
  */
@@ -12,8 +21,22 @@ body {
     max-height: 100vh;
 }
 
+.white {
+    color: #FFF !important;
+}
+
 i.white {
     color: #FFF !important;
+}
+
+.penny-header {
+    margin: 10px;
+}
+
+.penny-header a,
+.penny-header a:hover,
+.penny-header a:active {
+    color: #FFF;
 }
 
 #header {
@@ -231,4 +254,49 @@ textarea {
 	-moz-transform:translate3d(0,0,0) rotateX(0);
 	-ms-transform:translate3d(0,0,0) rotateX(0);
 	transform:translate3d(0,0,0) rotateX(0);
+}
+
+
+
+/* HEADERS and BACKGROUNDS */
+/* Header */
+.large-header {
+	position: relative;
+	width: 100%;
+	background: #111;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+}
+
+#large-header {
+
+}
+
+.main-content {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	color: #f9f1e9;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+}
+
+.main-title {
+    font-family: "Courier New";
+	font-size: 4.2em;
+}
+
+.main-title .thin {
+	font-weight: 200;
+}
+
+@media only screen and (max-width : 768px) {
+	.demo-1 .main-title {
+		font-size: 3em;
+	}
 }
