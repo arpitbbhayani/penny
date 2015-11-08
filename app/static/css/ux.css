@@ -1,10 +1,5 @@
-#landing {
-    height: 100%;
-    width: 550px;
-}
-
-#landing .column {
-    max-width: 550px;
+* {
+    border-radius: 0 !important;
 }
 
 /*
@@ -44,9 +39,44 @@ i.white {
     background-color: #FFF;
 }
 
-#main-content {
-    margin: auto auto;
+/*
+ *  Landing Page
+ */
+
+#landing {
+    height: 100%;
+    width: 550px;
 }
+
+#landing .column {
+    max-width: 550px;
+}
+
+.main-content input {
+    background: transparent !important;
+    color: #FFF !important;
+    border: 1px solid #00B5AD !important;
+}
+
+.main-content input::-webkit-input-placeholder {
+   color: #999 !important;
+}
+
+.main-content input :-moz-placeholder { /* Firefox 18- */
+   color: #999 !important;
+}
+
+.main-content input ::-moz-placeholder {  /* Firefox 19+ */
+   color: #999 !important;
+}
+
+.main-content input :-ms-input-placeholder {
+   color: #999 !important;
+}
+
+/*
+ * Others
+ */
 
 #left-section {
     background-color: #FFF;
