@@ -103,6 +103,7 @@ i.white {
     color: #00B5AD !important;
 }
 
+#landing input[type="email"],
 #landing input[type="text"],
 #landing input[type="password"] {
     background: transparent !important;

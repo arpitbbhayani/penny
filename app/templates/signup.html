@@ -10,8 +10,46 @@
     <canvas id="demo-canvas"></canvas>
     <div class="ui middle aligned center aligned grid" id="landing">
         <div class="column">
-            <a href="/signin" class="ui huge teal submit basic button">Sign In</a>
-            <a href="/signup" class="ui huge teal submit basic button">Sign Up</a>
+            <div class="ui inverted secondary pointing menu top">
+                <a class="active item" data-tab="signin"><h3>Sign Up</h3></a>
+            </div>
+            <div class="ui active tab" data-tab="signin">
+                <form class="ui large form" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="ui stacked basic segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user white icon"></i>
+                                <input id="given_name" name="given_name" placeholder="Your name" required="true" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="mail white icon"></i>
+                                <input id="email" name="email" placeholder="Email" required="true" type="email" value="">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock white icon"></i>
+                                <input id="password" name="password" placeholder="Password" required="true" type="password" value="">
+                            </div>
+                        </div>
+                        <input type="submit" class="ui fluid large teal submit button" value="Sign Up" />
+                    </div>
+                </form>
+                <div class="error">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class="flashes">
+                                {% for message in messages %}
+                                <li><h4>{{ message }}</h4></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
         </div>
     </div>
 </div>
