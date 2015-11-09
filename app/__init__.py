@@ -15,6 +15,9 @@ app.config['STORMPATH_REGISTRATION_URL'] = '/signup'
 app.config['STORMPATH_LOGIN_TEMPLATE'] = 'login.html'
 app.config['STORMPATH_REGISTRATION_TEMPLATE'] = 'signup.html'
 
+app.config['STORMPATH_REQUIRE_USERNAME'] = False
+app.config['STORMPATH_REQUIRE_SURNAME'] = False
+app.config['STORMPATH_REQUIRE_MIDDLE_NAME'] = False
 
 stormpath_manager = StormpathManager(app)
 
