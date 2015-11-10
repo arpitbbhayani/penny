@@ -26,4 +26,11 @@ QUARKS_CRAWLER_URL = [
 
 # Music
 
-GOOGLE_SERVER_API_KEY = xxxxxxxxxxxxxxxxxxxx
+GOOGLE_SERVER_API_KEY = 'xxxxxxxxxxxxxxxxxxxx'
+
+FACEBOOK_APP_KEY = 'xxxxxxxxxxxxxxx'
+FACEBOOK_APP_SECRET = 'xxxxxxxxxxxxxxx'
+
+USER_SQL_DB_URI = 'xxxxxxxxxxxx'
+
+APP_SECRET = 'xxxxxxxxxxx'

@@ -9,3 +9,4 @@ penenv
 app/config.py
 *.tmp
 *.db
+*.log

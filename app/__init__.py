@@ -1,11 +1,6 @@
 from flask import Flask
-from flask.ext.login import LoginManager
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'SET T0 4NY SECRET KEY L1KE RAND0M H4SH'
-
-# from app import views1
 
 from app.views import todo
 from app.views import pages
@@ -23,11 +18,23 @@ app.register_blueprint(astros.mod, url_prefix='/astros')
 app.register_blueprint(music.mod, url_prefix='/music')
 app.register_blueprint(wishapi.mod)
 
+from flask.ext.login import LoginManager
+
+app.config['SECRET_KEY'] = config.APP_SECRET
+
+app.config['SQLALCHEMY_DATABASE_URI'] = config.USER_SQL_DB_URI
+app.config['OAUTH_CREDENTIALS'] = {
+    'facebook': {
+        'id': config.FACEBOOK_APP_KEY,
+        'secret': config.FACEBOOK_APP_SECRET
+    }
+}
+
+from app.models import User
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-from app.user import User
-
 @login_manager.user_loader
 def load_user(id):
-    return User.get(id)
+    return User.query.get(int(id))
