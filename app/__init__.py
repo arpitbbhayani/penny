@@ -1,22 +1,11 @@
-from os.path import expanduser
 from flask import Flask
-
-from flask.ext.stormpath import StormpathManager
+from flask.ext.login import LoginManager
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'SET T0 4NY SECRET KEY L1KE RAND0M H4SH'
-app.config['STORMPATH_API_KEY_FILE'] = expanduser('~/.stormpath/apiKey.properties')
-app.config['STORMPATH_APPLICATION'] = 'Penny'
 
-app.config['STORMPATH_LOGIN_URL'] = '/signin'
-app.config['STORMPATH_REGISTRATION_URL'] = '/signup'
-
-app.config['STORMPATH_LOGIN_TEMPLATE'] = 'login.html'
-app.config['STORMPATH_REGISTRATION_TEMPLATE'] = 'signup.html'
-
-
-stormpath_manager = StormpathManager(app)
+# from app import views1
 
 from app.views import todo
 from app.views import pages
@@ -33,3 +22,12 @@ app.register_blueprint(webcomics.mod, url_prefix='/webcomics')
 app.register_blueprint(astros.mod, url_prefix='/astros')
 app.register_blueprint(music.mod, url_prefix='/music')
 app.register_blueprint(wishapi.mod)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+from app.user import User
+
+@login_manager.user_loader
+def load_user(id):
+    return User.get(id)
