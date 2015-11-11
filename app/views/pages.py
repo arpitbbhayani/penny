@@ -1,3 +1,4 @@
+import datetime
 from bson import ObjectId
 from flask import Blueprint
 
@@ -8,12 +9,6 @@ from flask_restful import reqparse
 from flask.ext.login import current_user, login_user, logout_user
 
 from app.oauth import OAuthSignIn
-
-from app.service import todosService
-from app.service import reminderService
-from app.service import webcomicsService
-from app.service import astrosService
-from app.service import musicService
 
 from app.models import User
 
@@ -66,14 +61,19 @@ def oauth_callback(provider):
     if not current_user.is_anonymous:
         return redirect('/')
     oauth = OAuthSignIn.get_provider(provider)
-    social_id, username, email = oauth.callback()
+
+    social_id, fname, lname, email = oauth.callback()
+
     if social_id is None:
         flash('Authentication failed.')
         return redirect('/')
     user = User.query.filter_by(social_id=social_id).first()
     if not user:
-        user = User(social_id=social_id, nickname=username, email=email)
+        user = User(social_id=social_id, fname=fname, lname=lname, email=email)
         db.session.add(user)
+        db.session.commit()
+    else:
+        user.last_login = datetime.datetime.utcnow()
         db.session.commit()
     login_user(user, True)
     return redirect('/')
