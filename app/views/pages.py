@@ -21,7 +21,6 @@ mod = Blueprint('pages', __name__, )
 def index():
     if request.method == 'GET':
         if current_user.is_authenticated:
-            print current_user.__dict__
             return render_template('boilerplate.html')
     # elif request.method == 'POST':
     #     parser = reqparse.RequestParser()

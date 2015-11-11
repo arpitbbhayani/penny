@@ -32,13 +32,10 @@
                         <input type="submit" class="ui fluid large teal submit button" value="Sign In" />
                     </div>
                 </form>
-                {% if current_user.is_authenticated %}
-                    <h2>Hi, {{ current_user.nickname }}!</h2>
-                    <p><a href="{{ url_for('logout') }}">Logout</a></p>
-                {% else %}
-                    <h2>I don't know you!</h2>
-                    <p><a href="/authorize/facebook">Login with Facebook</a></p>
-                {% endif %}
+                <a class="ui facebook button" href="/authorize/facebook">
+                    <i class="facebook icon"></i>
+                    Login with Facebook
+                </a>
                 <div class="error">
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
