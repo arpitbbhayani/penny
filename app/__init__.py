@@ -9,6 +9,7 @@ from app.views import music
 from app.views import wishapi
 from app.views import reminders
 from app.views import webcomics
+from app.views import admin
 
 app.register_blueprint(pages.mod)
 app.register_blueprint(todo.mod, url_prefix='/todos')
@@ -16,6 +17,7 @@ app.register_blueprint(reminders.mod, url_prefix='/reminders')
 app.register_blueprint(webcomics.mod, url_prefix='/webcomics')
 app.register_blueprint(astros.mod, url_prefix='/astros')
 app.register_blueprint(music.mod, url_prefix='/music')
+app.register_blueprint(admin.mod, url_prefix='/admin')
 app.register_blueprint(wishapi.mod)
 
 from flask.ext.login import LoginManager
@@ -34,6 +36,8 @@ from app.models import User
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+login_manager.login_view = '/'
 
 @login_manager.user_loader
 def load_user(id):

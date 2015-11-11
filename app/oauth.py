@@ -51,7 +51,7 @@ class FacebookSignIn(OAuthSignIn):
 
     def callback(self):
         if 'code' not in request.args:
-            return None, None, None
+            return None, None, None, None
         oauth_session = self.service.get_auth_session(
             data={'code': request.args['code'],
                   'grant_type': 'authorization_code',
