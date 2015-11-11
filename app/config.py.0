@@ -1,5 +1,14 @@
 import os
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+
+APP_SECRET = 'SET T0 4NY SECRET KEY L1KE RAND0M H4SH'
+
 #
 # Supported database:
 #   1. mongo
@@ -8,29 +17,19 @@ import os
 db = 'mongo'
 
 # Reminders
-
 REMIND_COMMAND = '%s/penenv/bin/python %s/bin/crons/remind_cron.py' % (os.getcwd(), os.getcwd())
 
-
 # Webcomics
-
 XKCD_CRAWLER_URL = 'http://xkcd.com/archive/'
 
-
 # Astros
-
 QUARKS_CRAWLER_URL = [
     'http://www.fromquarkstoquasars.com/post-sitemap1.xml'
 ]
 
+# google
+GOOGLE_SERVER_API_KEY = 'xxxxxxxxxx'
 
-# Music
-
-GOOGLE_SERVER_API_KEY = 'xxxxxxxxxxxxxxxxxxxx'
-
-FACEBOOK_APP_KEY = 'xxxxxxxxxxxxxxx'
-FACEBOOK_APP_SECRET = 'xxxxxxxxxxxxxxx'
-
-USER_SQL_DB_URI = 'xxxxxxxxxxxx'
-
-APP_SECRET = 'xxxxxxxxxxx'
+# facebook
+FACEBOOK_APP_KEY = 'xxxxxxxxxx'
+FACEBOOK_APP_SECRET = 'xxxxxxxxxx'

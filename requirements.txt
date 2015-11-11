@@ -18,8 +18,8 @@ MarkupSafe==0.23
 meld3==1.0.2
 nose==1.3.7
 oauthlib==1.0.3
-rauth==0.7.0
 path.py==8.1
+pbr==1.8.1
 pexpect==3.3
 pickleshare==0.5
 pyglet==1.2.4
@@ -30,11 +30,15 @@ pymongo==3.0.3
 python-crontab==1.9.3
 python-dateutil==2.4.2
 pytz==2015.6
+rauth==0.7.0
 requests==2.8.1
 requests-oauthlib==0.5.0
 simplegeneric==0.8.1
 six==1.10.0
 SQLAlchemy==1.0.9
+sqlalchemy-migrate==0.10.0
+sqlparse==0.1.18
+Tempita==0.5.2
 traitlets==4.0.0
 tweepy==3.4.0
 Werkzeug==0.10.4

@@ -22,7 +22,7 @@ from flask.ext.login import LoginManager
 
 app.config['SECRET_KEY'] = config.APP_SECRET
 
-app.config['SQLALCHEMY_DATABASE_URI'] = config.USER_SQL_DB_URI
+app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
 app.config['OAUTH_CREDENTIALS'] = {
     'facebook': {
         'id': config.FACEBOOK_APP_KEY,
