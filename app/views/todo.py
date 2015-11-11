@@ -1,9 +1,8 @@
 from flask import Blueprint
-
-from flask import render_template, request, redirect
-from flask import url_for, make_response, jsonify
+from flask import render_template, jsonify
 
 from flask.ext.restful import reqparse
+from flask.ext.login import login_required
 
 from app.items.todo import Todo
 from app.dao.todoDao import TodoDao
@@ -15,18 +14,21 @@ from bson import ObjectId
 mod = Blueprint('todos', __name__, )
 
 @mod.route('/', methods=["GET"])
+@login_required
 def index():
     todos = todosService.get_todos()
     return render_template('pages/todo_widget.html', todos=todos)
 
 
 @mod.route('/create', methods=['POST'])
+@login_required
 def create():
     todoObj = todosService.create_todo('Default Name')
     return jsonify(todoObj.jsonify())
 
 
 @mod.route('/delete', methods=['POST'])
+@login_required
 def delete():
     parser = reqparse.RequestParser()
     parser.add_argument('id', required=True, type=ObjectId, help='Rate cannot be converted', location='form')
@@ -39,6 +41,7 @@ def delete():
 
 
 @mod.route('/save', methods=["POST"])
+@login_required
 def save():
     parser = reqparse.RequestParser()
     parser.add_argument('id', required=True, type=ObjectId, help='Rate cannot be converted', location='form')

@@ -1,7 +1,7 @@
 from flask import Blueprint
+from flask import render_template, jsonify
 
-from flask import render_template, request, redirect
-from flask import url_for, make_response, jsonify
+from flask.ext.login import login_required
 
 from app.items import commands
 from app.items.astro import astro
@@ -11,6 +11,7 @@ from app.items.webcomic import webcomic
 mod = Blueprint('wishapi', __name__, )
 
 @mod.route('/wish', methods=["GET", "POST"])
+@login_required
 def wishapi():
     wish = request.args.get('wish')
 
@@ -43,5 +44,6 @@ def wishapi():
 
 
 @mod.route('/commands', methods=["GET", "POST"])
+@login_required
 def help():
     return commands.getCommands()

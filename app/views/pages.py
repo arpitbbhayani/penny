@@ -1,11 +1,9 @@
 import datetime
-from bson import ObjectId
-from flask import Blueprint
+from flask import Blueprint, request
 
-from flask import render_template, request, redirect, flash
-from flask import url_for, make_response, get_flashed_messages
-
+from flask import render_template, redirect, flash, get_flashed_messages
 from flask_restful import reqparse
+
 from flask.ext.login import current_user, login_user, logout_user
 
 from app.oauth import OAuthSignIn
@@ -18,6 +16,7 @@ mod = Blueprint('pages', __name__, )
 
 @mod.route('/', methods=["GET"])
 def index():
+    print request.headers
     if current_user.is_authenticated:
         return render_template('boilerplate.html')
     return render_template('index.html')

@@ -1,18 +1,17 @@
 import random
 
-from flask import Blueprint
-
-from flask import request, render_template
-from flask import url_for, make_response, jsonify
+from flask import Blueprint, jsonify
 from flask_restful import reqparse
+from flask import request, render_template
 
-from flask import render_template
+from flask.ext.login import login_required
 
 from app.service import musicService
 
 mod = Blueprint('music', __name__, )
 
 @mod.route('/', methods=["GET"])
+@login_required
 def index():
     # Playlists
     playlists_meta = musicService.get_playlists_meta_info()
@@ -20,12 +19,14 @@ def index():
 
 
 @mod.route('/playlist/<playlist_id>', methods=["GET"])
+@login_required
 def get_playlist(playlist_id):
     error, playlist = musicService.get_playlist(playlist_id)
     return render_template('playlist.html', error=error, playlist=playlist)
 
 
 @mod.route('/playlist/<playlist_id>/add', methods=["POST"])
+@login_required
 def add_links_to_playlist(playlist_id):
     parser = reqparse.RequestParser()
     parser.add_argument('link', type=str, help='link cannot be empty', location='form')
@@ -38,12 +39,14 @@ def add_links_to_playlist(playlist_id):
 
 
 @mod.route('/playlist/<playlist_id>/random', methods=["GET"])
+@login_required
 def get_random_from_playlist(playlist_id):
     error, link_info = musicService.get_random_link(playlist_id)
     return jsonify(resp=link_info, error=error)
 
 
 @mod.route('/playlist/<playlist_id>/all', methods=["GET"])
+@login_required
 def all_from_playlist_randomly(playlist_id):
     error, links = musicService.get_links_in_playlist(playlist_id)
     random.shuffle(links)
@@ -51,6 +54,7 @@ def all_from_playlist_randomly(playlist_id):
 
 
 @mod.route('/playlist/create', methods=["POST"])
+@login_required
 def create_playlist():
     parser = reqparse.RequestParser()
     parser.add_argument('name', type=str, help='name cannot be empty', location='form')
@@ -64,6 +68,7 @@ def create_playlist():
 
 
 @mod.route('/playlist/delete', methods=["POST"])
+@login_required
 def delete_playlist():
     parser = reqparse.RequestParser()
     parser.add_argument('id', type=str, help='id cannot be empty', location='form')
