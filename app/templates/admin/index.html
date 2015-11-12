@@ -1,0 +1,40 @@
+{% extends "admin/boilerplate.html" %}
+
+{% block body %}
+<div class="overlay">
+    <div class="ui fixed borderless menu">
+        <div class="penny-header">
+            <a href="/"><h2>Penny Admin</h2></a>
+        </div>
+        <div class="right item">
+            <div class="ui buttons">
+                <a class="basic button ui orange" href="/logout">
+                    Logout
+                    <i class="icon arrow right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="error-zone" class="ui top sidebar">
+        <div id="error-msg" class="ui negative message header large"></div>
+    </div>
+    <div id="alert-zone" class="ui top sidebar">
+        <div id="alert-msg" class="ui positive message header large"></div>
+    </div>
+
+    <div class="ui grid">
+        <div class="twelve wide column" id="left-section">
+            <div id="zone">
+                <div class="ui secondary pointing menu">
+                    <a class="{%- if request.path == "{{ url_for('/') }}" %}active{% endif %} item teal" href="/music">
+                        User Settings
+                    </a>
+                </div>
+                <div class="ui basic segment">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
