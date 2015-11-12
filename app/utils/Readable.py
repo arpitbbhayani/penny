@@ -12,12 +12,18 @@ def time(t):
     """
     return t.strftime('%I:%M %p')
 
+def from_datetime(d):
+    """
+    Returns human readable date-time format from datetime
+    """
+    return d.strftime('%I:%M:%S %p on %d, %b %Y')
+
 def from_ts(timestamp):
     """
     Returns human readable date-time format from timestamp
     """
     d = datetime.fromtimestamp(timestamp)
-    return d.strftime('%I:%M:%S %p on %d, %b %Y')
+    return from_datetime(d)
 
 def fromBytes(bytes):
     """

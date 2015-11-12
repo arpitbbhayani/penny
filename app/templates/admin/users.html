@@ -1,5 +1,34 @@
 {% extends "admin/index.html" %}
 
 {% block content %}
-<h2>Users</h2>
+<div class="ui basic segment" id="users_table_s">
+    <table class="ui sortable red celled table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created At</th>
+                <th>Last Login</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at}}</td>
+                <td>{{user.last_login}}</td>
+                <td>
+                    <a href="{{url_for('adminuser.edit', user_id=user.id)}}">
+                        <i class="ui pencil icon"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

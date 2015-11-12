@@ -13,6 +13,6 @@ class User(UserMixin, db.Model):
     fname       = db.Column(db.String(64), nullable=False)
     lname       = db.Column(db.String(64), nullable=False)
     email       = db.Column(db.String(64), nullable=True)
-    group       = db.Column(db.String(64), nullable=False, default='user')
+    role        = db.Column(db.String(64), nullable=False, default='user')
     created_at  = db.Column(db.DateTime(timezone=True), default=datetime.datetime.utcnow())
     last_login  = db.Column(db.DateTime(timezone=True), default=datetime.datetime.utcnow())
