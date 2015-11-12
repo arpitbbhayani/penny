@@ -4,11 +4,11 @@
 <div class="overlay">
     <div class="ui fixed borderless menu">
         <div class="penny-header">
-            <a href="/"><h2>Penny Admin</h2></a>
+            <a href="{{url_for('.index')}}"><h2>Penny Admin</h2></a>
         </div>
         <div class="right item">
             <div class="ui buttons">
-                <a class="basic button ui orange" href="/logout">
+                <a class="basic button ui orange" href="{{url_for('pages.logout')}}">
                     Logout
                     <i class="icon arrow right"></i>
                 </a>
@@ -26,8 +26,8 @@
         <div class="twelve wide column" id="left-section">
             <div id="zone">
                 <div class="ui secondary pointing menu">
-                    <a class="{%- if request.path == "{{ url_for('/') }}" %}active{% endif %} item teal" href="/music">
-                        User Settings
+                    <a class="{%- if request.path == url_for('.users') %}active{% endif %} item teal" href="{{url_for('.users')}}">
+                        User Management
                     </a>
                 </div>
                 <div class="ui basic segment">

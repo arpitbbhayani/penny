@@ -13,6 +13,13 @@ def index():
     return render_template('admin/index.html')
 
 
+@mod.route('/users', methods=["GET"])
+@login_required
+@requires_roles('user')
+def users():
+    return render_template('admin/users.html')
+
+
 @mod.route('/<astro_id>/sync', methods=["POST"])
 @login_required
 @requires_roles('user')
