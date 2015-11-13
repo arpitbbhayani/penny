@@ -130,23 +130,6 @@ i.white {
  * Others
  */
 
-#left-section {
-    background-color: #FFF;
-}
-
-#right-section {
-    background-color: #FFF;
-}
-
-#zone {
-    height: 100%;
-    margin-top: 70px;
-}
-
-#news-stream {
-    height: 100%;
-    margin-top: 70px;
-}
 
 #wish-form {
     width: 100%;
@@ -174,11 +157,7 @@ i.white {
     overflow-y: scroll;
 }
 
-#todos {
-
-}
-
-#music-modal, #webcomic-modal {
+.modal {
     margin-top: 20px !important;
     position: static;
 }

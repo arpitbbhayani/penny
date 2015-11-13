@@ -1,124 +1,44 @@
-{% extends "raw.html" %}
-
-{% block body %}
-<div class="overlay">
-    <div class="ui fixed borderless menu">
-        <div class="penny-header">
-            <a href="{{url_for('pages.index')}}"><h2>Penny</h2></a>
-        </div>
-        <div class="right item">
-            <div class="ui buttons">
-                <a class="basic button ui blue" href="/configure">
-                    <i class="icon configure"></i>
-                    Configure
-                </a>
-                <a class="basic button ui orange" href="{{url_for('pages.logout')}}">
-                    Logout
-                    <i class="icon arrow right"></i>
-                </a>
-            </div>
-        </div>
-        <!-- <form id="wish-form" class="ui fluid form">
-            <div class="fields">
-                <div class="ten wide field">
-                    <div class="ui fluid input field inline">
-                        <input type="text" id="wish" name="wish" placeholder="How may I help you?" autocomplete="off">
-                    </div>
-                </div>
-                <div class="four wide field">
-                </div>
-            </div>
-            <input type="submit" style="display: none;">
-        </form> -->
+<div class="ui basic fullscreen modal" id="webcomic-modal">
+    <i class="close icon white"></i>
+    <div class="header"></div>
+    <div class="ui basic segment">
+        <a href="" target="_blank">
+            <img class="ui centered image" src="">
+        </a>
     </div>
-    <div id="error-zone" class="ui top sidebar">
-        <div id="error-msg" class="ui negative message header large"></div>
-    </div>
-    <div id="alert-zone" class="ui top sidebar">
-        <div id="alert-msg" class="ui positive message header large"></div>
-    </div>
+</div>
 
-    <div class="ui basic fullscreen modal" id="webcomic-modal">
-        <i class="close icon white"></i>
-        <div class="header"></div>
-        <div class="ui basic segment">
-            <a href="" target="_blank">
-                <img class="ui centered image" src="">
-            </a>
-        </div>
-    </div>
+<div class="ui basic modal" id="astro-modal">
+    <iframe src="" width='100%' height = '100%'></iframe>
+</div>
 
-    <div class="ui basic modal" id="astro-modal">
-        <iframe src="" width='100%' height = '100%'></iframe>
-    </div>
-
-    <div class="ui basic fullscreen modal" id="music-modal">
-        <div class="ui basic" id="music-modal">
-            <div class="ui one column stackable center aligned page grid">
-                <div class="column twelve wide">
-                    <div id="music-playarea"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    var music_player = null;
-    function onYouTubeIframeAPIReady() {
-        music_player = new YT.Player('music-playarea', {
-            height: '390',
-            width: '640',
-            playerVars: { 'autoplay': 1 },
-            events: {
-                'onReady': function(event) {
-                    event.target.pauseVideo();
-                    music_player.addEventListener('onStateChange', function(e) {
-                        if( e.data == 5 ) {
-                            event.target.playVideo();
-                        }
-                    });
-                },
-            }
-        });
-    };
-    </script>
-
-    <div class="ui grid">
-        <div class="twelve wide column" id="left-section">
-            <div id="zone">
-                <div class="ui secondary pointing menu">
-                    <a class="{%- if request.path == url_for('todos.index') %}active{% endif %} item teal" href="{{url_for('todos.index')}}">
-                        Todo
-                    </a>
-                    <a class="{%- if request.path == url_for('reminders.index') %}active{% endif %} item teal" href="{{url_for('reminders.index')}}">
-                        Reminder
-                    </a>
-                    <a class="{%- if request.path == url_for('webcomics.index') %}active{% endif %} item teal" href="{{url_for('webcomics.index')}}">
-                        Webcomics
-                    </a>
-                    <a class="{%- if request.path == url_for('astros.index') %}active{% endif %} item teal" href="{{url_for('astros.index')}}">
-                        Astronomy
-                    </a>
-                    <a class="{%- if request.path == url_for('music.index') %}active{% endif %} item teal" href="{{url_for('music.index')}}">
-                        Music
-                    </a>
-                </div>
-                <div class="ui basic segment">
-                    {% block content %}{% endblock %}
-                </div>
-            </div>
-        </div>
-        <div class="four wide column" id="right-section">
-            <div id="news-stream" class="ui class header">
-                <div class="ui secondary pointing menu">
-                    <a class="active tab item red" data-tab="toi">
-                        Times Of India
-                    </a>
-                </div>
-                <div class="ui tab basic segment active" data-tab="toi">
-                </div>
+<div class="ui basic fullscreen modal" id="music-modal">
+    <div class="ui basic" id="music-modal">
+        <div class="ui one column stackable center aligned page grid">
+            <div class="column twelve wide">
+                <div id="music-playarea"></div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+
+<script>
+var music_player = null;
+function onYouTubeIframeAPIReady() {
+    music_player = new YT.Player('music-playarea', {
+        height: '390',
+        width: '640',
+        playerVars: { 'autoplay': 1 },
+        events: {
+            'onReady': function(event) {
+                event.target.pauseVideo();
+                music_player.addEventListener('onStateChange', function(e) {
+                    if( e.data == 5 ) {
+                        event.target.playVideo();
+                    }
+                });
+            },
+        }
+    });
+};
+</script>

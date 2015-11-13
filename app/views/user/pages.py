@@ -1,7 +1,7 @@
 import datetime
 from flask import Blueprint, request
 
-from flask import render_template, redirect, flash, get_flashed_messages, url_for
+from flask import render_template, redirect, flash, url_for
 from flask_restful import reqparse
 
 from flask.ext.login import current_user, login_user, logout_user
@@ -16,8 +16,6 @@ mod = Blueprint('pages', __name__, )
 
 @mod.route('/', methods=["GET"])
 def index():
-    if current_user.is_authenticated:
-        return render_template('boilerplate.html')
     return render_template('index.html')
 
 
@@ -37,7 +35,6 @@ def oauth_authorize(provider):
 
 @mod.route('/callback/<provider>')
 def oauth_callback(provider):
-    print request.values
     if not current_user.is_anonymous:
         return redirect(url_for('pages.index'))
     oauth = OAuthSignIn.get_provider(provider)
