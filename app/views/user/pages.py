@@ -1,7 +1,7 @@
 import datetime
 from flask import Blueprint, request
 
-from flask import render_template, redirect, flash, get_flashed_messages
+from flask import render_template, redirect, flash, get_flashed_messages, url_for
 from flask_restful import reqparse
 
 from flask.ext.login import current_user, login_user, logout_user
@@ -16,7 +16,6 @@ mod = Blueprint('pages', __name__, )
 
 @mod.route('/', methods=["GET"])
 def index():
-    print request.headers
     if current_user.is_authenticated:
         return render_template('boilerplate.html')
     return render_template('index.html')
@@ -25,13 +24,13 @@ def index():
 @mod.route('/logout')
 def logout():
     logout_user()
-    return redirect('/')
+    return redirect(url_for('pages.index'))
 
 
 @mod.route('/authorize/<provider>')
 def oauth_authorize(provider):
     if not current_user.is_anonymous:
-        return redirect('/')
+        return redirect(url_for('pages.index'))
     oauth = OAuthSignIn.get_provider(provider)
     return oauth.authorize()
 
@@ -40,14 +39,14 @@ def oauth_authorize(provider):
 def oauth_callback(provider):
     print request.values
     if not current_user.is_anonymous:
-        return redirect('/')
+        return redirect(url_for('pages.index'))
     oauth = OAuthSignIn.get_provider(provider)
 
     social_id, fname, lname, email = oauth.callback()
 
     if social_id is None:
         flash('Authentication failed.')
-        return redirect('/')
+        return redirect(url_for('pages.index'))
     user = User.query.filter_by(email=email).first()
     if not user:
         user = User(social_id=social_id, fname=fname, lname=lname, email=email)
@@ -57,4 +56,4 @@ def oauth_callback(provider):
         user.last_login = datetime.datetime.utcnow()
         db.session.commit()
     login_user(user, True)
-    return redirect('/')
+    return redirect(url_for('pages.index'))

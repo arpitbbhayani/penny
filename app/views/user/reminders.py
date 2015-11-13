@@ -6,7 +6,7 @@ from flask.ext.login import login_required
 
 from app.service import reminderService
 
-mod = Blueprint('reminder', __name__, )
+mod = Blueprint('reminders', __name__, )
 
 @mod.route('/', methods=['GET'])
 @login_required

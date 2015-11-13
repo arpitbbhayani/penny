@@ -4,7 +4,7 @@
 <div class="overlay">
     <div class="ui fixed borderless menu">
         <div class="penny-header">
-            <a href="/"><h2>Penny</h2></a>
+            <a href="{{url_for('pages.index')}}"><h2>Penny</h2></a>
         </div>
         <div class="right item">
             <div class="ui buttons">
@@ -12,7 +12,7 @@
                     <i class="icon configure"></i>
                     Configure
                 </a>
-                <a class="basic button ui orange" href="/logout">
+                <a class="basic button ui orange" href="{{url_for('pages.logout')}}">
                     Logout
                     <i class="icon arrow right"></i>
                 </a>
@@ -87,19 +87,19 @@
         <div class="twelve wide column" id="left-section">
             <div id="zone">
                 <div class="ui secondary pointing menu">
-                    <a class="{%- if request.path == "/todos/" %}active{% endif %} item teal" href='/todos'>
+                    <a class="{%- if request.path == url_for('todos.index') %}active{% endif %} item teal" href="{{url_for('todos.index')}}">
                         Todo
                     </a>
-                    <a class="{%- if request.path == "/reminders/" %}active{% endif %} item teal" href="/reminders">
+                    <a class="{%- if request.path == url_for('reminders.index') %}active{% endif %} item teal" href="{{url_for('reminders.index')}}">
                         Reminder
                     </a>
-                    <a class="{%- if request.path == "/webcomics/" %}active{% endif %} item teal" href="/webcomics">
+                    <a class="{%- if request.path == url_for('webcomics.index') %}active{% endif %} item teal" href="{{url_for('webcomics.index')}}">
                         Webcomics
                     </a>
-                    <a class="{%- if request.path == "/astros/" %}active{% endif %} item teal" href="/astros">
+                    <a class="{%- if request.path == url_for('astros.index') %}active{% endif %} item teal" href="{{url_for('astros.index')}}">
                         Astronomy
                     </a>
-                    <a class="{%- if request.path == "/music/" %}active{% endif %} item teal" href="/music">
+                    <a class="{%- if request.path == url_for('music.index') %}active{% endif %} item teal" href="{{url_for('music.index')}}">
                         Music
                     </a>
                 </div>
