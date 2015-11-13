@@ -12,7 +12,7 @@ mod = Blueprint('adminuser', __name__)
 @mod.route('/<user_id>', methods=["GET", "POST"])
 @login_required
 @requires_roles('admin')
-def edit(user_id):
+def user(user_id):
     user = User.query.get(user_id)
     if request.method == "GET":
         user = user
