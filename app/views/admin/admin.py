@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, flash
 from jinja2 import TemplateNotFound
 from flask.ext.login import login_required
 

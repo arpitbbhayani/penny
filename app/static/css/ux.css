@@ -42,10 +42,18 @@ i.white {
     color: #00B5AD;
 }
 
-.flashes li {
+#flashes li {
     color: #FF6200;
     text-align: left;
     list-style: none;
+}
+
+#msg, #flashes {
+    position: fixed;
+    top: 60px;
+    left: 10%;
+    width: 80%;
+    z-index: 10;
 }
 
 /*

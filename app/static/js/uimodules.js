@@ -1,37 +1,33 @@
-var uiModulesClass = function() {
+$('#flashes, #msg').click(function(){
+    $(this).transition('fade out');
+});
+
+var uiModules = {
     /*
      *  uiModulesClass: Class that defines the UI Modules
      *  Contains all the methods that would enable showing errors,
      *  show waiting ticker, context menu .. etc.
      */
 
-    this.notify = function(response) {
-        $('#alert-msg').html(response);
-        $('#alert-zone')
-            .sidebar('setting', 'transition', 'overlay')
-            .sidebar('setting', 'dimPage', false)
-            .sidebar('toggle');
-    };
+    notify : function(response) {
+        $('#msg').removeClass('negative positive').addClass('info').html(response).transition('bounce');
+        $('#msggrid').show();
+    },
 
-    this.showError = function(response) {
-        if( typeof(response) == 'string' ) {
-            $('#error-msg').html(response);
+    showError : function(response) {
+    var error = response.error;
+        if (!error) {
+            error = response;
         }
-        else {
-            $('#error-msg').html(response.error);
-        }
+        $('#msg').removeClass('info positive').addClass('negative').html(error).transition('bounce');
+        $('#msggrid').show();
+    },
 
-        $('#error-zone')
-            .sidebar('setting', 'transition', 'overlay')
-            .sidebar('setting', 'dimPage', false)
-            .sidebar('toggle');
-    };
-
-    this.showWaiting = function(targetElement) {
+    showWaiting : function(targetElement) {
         targetElement.html('<i class="fa fa-spinner fa-spin"></i>');
-    }
+    },
 
-    this.removeWaiting = function(targetElement) {
+    removeWaiting : function(targetElement) {
         targetElement.html(null);
     }
 };

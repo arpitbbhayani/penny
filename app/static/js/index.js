@@ -1,4 +1,3 @@
-var uiModules   = new uiModulesClass();
 var markdown = window.markdownit();
 
 $(document).ready(function() {

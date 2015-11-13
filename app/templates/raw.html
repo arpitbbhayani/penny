@@ -43,32 +43,18 @@
             {% endif %}
         </div>
     </div>
-    <div class="ui grid" style="display: none;">
-        <div class="row">
-            <div class="one wide column"></div>
-            <div class="thirteen wide column">
-                <div id="msg" class="ui negative message"></div>
+    <div id="msg" class="ui negative message" style="display: none;"></div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="ui message" id="flashes">
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
             </div>
-        </div>
-    </div>
-    <div class="ui grid" style="display: none;">
-        <div class="row">
-            <div class="one wide column"></div>
-            <div class="thirteen wide column">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        <div class="ui message">
-                            <ul class="flashes">
-                                {% for message in messages %}
-                                <li>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endif %}
-                {% endwith %}
-            </div>
-        </div>
-    </div>
+        {% endif %}
+    {% endwith %}
     {% block body %}{% endblock %}
 </body>
 <head>
