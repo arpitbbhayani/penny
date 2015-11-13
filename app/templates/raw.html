@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div class="ui fixed borderless menu" style="{% if current_user.is_authenticate %}{% else %}background: black;{% endif %}">
+    <div class="ui fixed borderless menu" style="{% if current_user.is_authenticate %}{% else %}background: transparent;{% endif %}">
         <div class="penny-header">
             <a href="{{url_for('pages.index')}}"><h2>Penny</h2></a>
         </div>
@@ -43,15 +43,15 @@
             {% endif %}
         </div>
     </div>
-    <div class="ui grid">
+    <div class="ui grid" style="display: none;">
         <div class="row">
             <div class="one wide column"></div>
             <div class="thirteen wide column">
-                <div id="msg" class="ui negative message" style="display: none;"></div>
+                <div id="msg" class="ui negative message"></div>
             </div>
         </div>
     </div>
-    <div class="ui grid">
+    <div class="ui grid" style="display: none;">
         <div class="row">
             <div class="one wide column"></div>
             <div class="thirteen wide column">
