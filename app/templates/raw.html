@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <div class="ui fixed borderless menu" style="{% if current_user.is_authenticate %}{% else %}background: transparent;{% endif %}">
+    <div class="ui fixed borderless menu" style="{% if current_user.is_authenticate %}{% else %}background: black;{% endif %}">
         <div class="penny-header">
             <a href="{{url_for('pages.index')}}"><h2>Penny</h2></a>
         </div>
