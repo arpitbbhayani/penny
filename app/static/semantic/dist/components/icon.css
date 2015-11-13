@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.1.4 - Icon
+ * # Semantic UI 2.1.6 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -124,7 +124,7 @@ i.link.icon {
   cursor: pointer;
   opacity: 0.8;
   -webkit-transition: opacity 0.1s ease;
-          transition: opacity 0.1s ease;
+  transition: opacity 0.1s ease;
 }
 i.link.icon:hover {
   opacity: 1 !important;
@@ -2376,6 +2376,9 @@ i.icon.conversation:before {
 }
 i.icon.umbrella:before {
   content: "\f0e9";
+}
+i.icon.clipboard:before {
+  content: "\f0ea";
 }
 i.icon.lightbulb:before {
   content: "\f0eb";

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.1.4 - Form
+ * # Semantic UI 2.1.6 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -112,7 +112,7 @@
   border-radius: 0.28571429rem;
   box-shadow: 0em 0em 0em 0em transparent inset;
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-          transition: color 0.1s ease, border-color 0.1s ease;
+  transition: color 0.1s ease, border-color 0.1s ease;
 }
 
 /* Text Area */
@@ -128,7 +128,7 @@
   border-radius: 0.28571429rem;
   box-shadow: 0em 0em 0em 0em transparent inset;
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-          transition: color 0.1s ease, border-color 0.1s ease;
+  transition: color 0.1s ease, border-color 0.1s ease;
   font-size: 1em;
   line-height: 1.2857;
   resize: vertical;
@@ -166,7 +166,7 @@
   padding: 0.62em 1em;
   color: rgba(0, 0, 0, 0.87);
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
-          transition: color 0.1s ease, border-color 0.1s ease;
+  transition: color 0.1s ease, border-color 0.1s ease;
 }
 
 /*--------------------
@@ -233,15 +233,6 @@
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
   width: 0px;
-}
-
-/*--------------------
-       Dividers
----------------------*/
-
-.ui.form .divider {
-  clear: both;
-  margin: 1em 0em;
 }
 
 /*--------------------
@@ -602,7 +593,7 @@
   text-shadow: none !important;
   color: transparent !important;
   -webkit-transition: all 0s linear;
-          transition: all 0s linear;
+  transition: all 0s linear;
   z-index: 100;
 }
 .ui.loading.form:before {
@@ -949,6 +940,19 @@
     padding-left: 0%;
     padding-right: 0%;
   }
+}
+
+/*--------------------
+     Equal Width
+---------------------*/
+
+.ui[class*="equal width"].form .fields > .field,
+.ui.form [class*="equal width"].fields > .field {
+  width: 100%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 /*--------------------

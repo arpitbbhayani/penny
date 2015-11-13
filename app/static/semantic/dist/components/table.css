@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.1.4 - Table
+ * # Semantic UI 2.1.6 - Table
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -45,7 +45,7 @@
 .ui.table th,
 .ui.table td {
   -webkit-transition: background 0.1s ease, color 0.1s ease;
-          transition: background 0.1s ease, color 0.1s ease;
+  transition: background 0.1s ease, color 0.1s ease;
 }
 
 /* Headers */
@@ -467,40 +467,57 @@
 }
 
 /*--------------
-   Hoverable
+   Selectable
 ---------------*/
 
-.ui.selectable.table tbody tr:hover {
+.ui.selectable.table tbody tr:hover,
+.ui.table tbody tr td.selectable:hover {
   background: rgba(0, 0, 0, 0.05) !important;
   color: rgba(0, 0, 0, 0.95) !important;
 }
-.ui.selectable.inverted.table tbody tr:hover {
+.ui.selectable.inverted.table tbody tr:hover,
+.ui.inverted.table tbody tr td.selectable:hover {
   background: rgba(255, 255, 255, 0.08) !important;
   color: #ffffff !important;
 }
 
+/* Selectable Cell Link */
+.ui.table tbody tr td.selectable {
+  padding: 0em;
+}
+.ui.table tbody tr td.selectable > a:not(.ui) {
+  display: block;
+  color: inherit;
+  padding: 0.71428571em 0.71428571em;
+}
+
 /* Other States */
 .ui.selectable.table tr.error:hover,
+.ui.table tr td.selectable.error:hover,
 .ui.selectable.table tr:hover td.error {
   background: #ffe7e7 !important;
   color: #943634 !important;
 }
 .ui.selectable.table tr.warning:hover,
+.ui.table tr td.selectable.warning:hover,
 .ui.selectable.table tr:hover td.warning {
   background: #fff4e4 !important;
   color: #493107 !important;
 }
 .ui.selectable.table tr.active:hover,
+.ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
   background: #E0E0E0 !important;
   color: rgba(0, 0, 0, 0.87) !important;
 }
 .ui.selectable.table tr.positive:hover,
+.ui.table tr td.selectable.positive:hover,
 .ui.selectable.table tr:hover td.positive {
   background: #f7ffe6 !important;
   color: #275b28 !important;
 }
 .ui.selectable.table tr.negative:hover,
+.ui.table tr td.selectable.negative:hover,
 .ui.selectable.table tr:hover td.negative {
   background: #ffe7e7 !important;
   color: #943634 !important;
