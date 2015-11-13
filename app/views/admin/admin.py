@@ -16,13 +16,13 @@ def index():
     return render_template('admin/index.html')
 
 
-@mod.route('/users', methods=["GET"])
+@mod.route('/user', methods=["GET"])
 @login_required
 @requires_roles('admin')
 def users():
     users = [{
             'id': user.id,
-            'name': user.fname + user.lname,
+            'name': '%s %s' % (user.fname, user.lname),
             'email': user.email,
             'created_at': readable.from_datetime(user.created_at),
             'last_login': readable.from_datetime(user.last_login)

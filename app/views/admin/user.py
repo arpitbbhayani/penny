@@ -8,7 +8,7 @@ from app.models import User
 
 mod = Blueprint('adminuser', __name__)
 
-@mod.route('/<user_id>/edit', methods=["GET"])
+@mod.route('/<user_id>', methods=["GET"])
 @login_required
 @requires_roles('admin')
 def edit(user_id):
