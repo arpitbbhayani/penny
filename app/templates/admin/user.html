@@ -1,5 +1,53 @@
 {% extends "admin/index.html" %}
 
 {% block content %}
-<h3>Edit {{user.fname}}</h3>
+<div class="ui grid center middle aligned">
+    <div class="ten wide column">
+        <form method="POST" action="#" class="ui form">
+            <h4 class="ui dividing header">User Details</h4>
+            <div class="field">
+                <label>Name</label>
+                <div class="two fields">
+                    <div class="field">
+                        <input type="text" name="fname" placeholder="First Name" value="{{user.fname}}">
+                    </div>
+                    <div class="field">
+                        <input type="text" name="lname" placeholder="Last Name"  value="{{user.lname}}">
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Email Address</label>
+                        <input type="text" name="Email" placeholder="Email" readonly="" value="{{user.email}}">
+                    </div>
+                    <div class="field">
+                        <label>Social ID</label>
+                        <input type="text" name="social_id" placeholder="Social ID" readonly="" value="{{user.social_id}}">
+                    </div>
+                </div>
+            </div>
+            <div class="field info">
+                <div class="three fields">
+                    <div class="field">
+                        <label>Role</label>
+                        <input type="text" name="role" placeholder="Role" value="{{user.role}}">
+                    </div>
+                    <div class="field">
+                        <label>Created At</label>
+                        <input type="text" name="created_at" placeholder="Created At" readonly="" value="{{user.created_at}}">
+                    </div>
+                    <div class="field">
+                        <label>Last logged in on</label>
+                        <input type="text" name="last_login" placeholder="Last Login" readonly="" value="{{user.last_login}}">
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <input class="ui basic teal button" type="submit" value="Save"/>
+            </div>
+        </form>
+    </div>
+<div>
 {% endblock %}

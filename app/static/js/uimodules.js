@@ -1,3 +1,4 @@
+$('#flashes').transition('pulse');
 $('#flashes, #msg').click(function(){
     $(this).transition('fade out');
 });

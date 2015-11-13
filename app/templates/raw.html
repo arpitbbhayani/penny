@@ -46,7 +46,7 @@
     <div id="msg" class="ui negative message" style="display: none;"></div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <div class="ui message" id="flashes">
+            <div class="ui message info" id="flashes">
                 <ul>
                     {% for message in messages %}
                     <li>{{ message }}</li>

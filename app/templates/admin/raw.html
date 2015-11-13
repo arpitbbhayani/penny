@@ -26,10 +26,6 @@
         <div class="right item">
             {% if current_user.is_authenticated %}
             <div class="ui buttons">
-                <a class="basic button ui blue" href="">
-                    <i class="icon configure"></i>
-                    Configure
-                </a>
                 <a class="basic button ui orange" href="{{url_for('pages.logout')}}">
                     Logout
                     <i class="icon arrow right"></i>
@@ -41,7 +37,7 @@
     <div id="msg" class="ui negative message" style="display: none;"></div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <div class="ui message" id="flashes">
+            <div class="ui message info" id="flashes">
                 <ul>
                     {% for message in messages %}
                     <li>{{ message }}</li>
