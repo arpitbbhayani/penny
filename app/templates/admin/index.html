@@ -1,40 +1,19 @@
-{% extends "admin/boilerplate.html" %}
+{% extends "admin/raw.html" %}
 
 {% block body %}
-<div class="overlay">
-    <div class="ui fixed borderless menu">
-        <div class="penny-header">
-            <a href="{{url_for('admin.index')}}"><h2>Penny Admin</h2></a>
-        </div>
-        <div class="right item">
-            <div class="ui buttons">
-                <a class="basic button ui orange" href="{{url_for('pages.logout')}}">
-                    Logout
-                    <i class="icon arrow right"></i>
+{% if current_user.is_authenticated %}
+    <div class="ui grid" style="padding-top: 65px;">
+        <div class="twelve wide column">
+            <div class="ui secondary pointing menu">
+                <a class="{%- if request.path == url_for('admin.users') %}active{% endif %} item teal" href="{{url_for('admin.users')}}">
+                    User Management
                 </a>
             </div>
-        </div>
-    </div>
-    <div id="error-zone" class="ui top sidebar">
-        <div id="error-msg" class="ui negative message header large"></div>
-    </div>
-    <div id="alert-zone" class="ui top sidebar">
-        <div id="alert-msg" class="ui positive message header large"></div>
-    </div>
-
-    <div class="ui grid">
-        <div class="sixteen wide column" id="left-section">
-            <div id="zone">
-                <div class="ui secondary pointing menu">
-                    <a class="{%- if request.path == url_for('admin.users') %}active{% endif %} item teal" href="{{url_for('admin.users')}}">
-                        User Management
-                    </a>
-                </div>
-                <div class="ui basic segment">
-                    {% block content %}{% endblock %}
-                </div>
+            <div class="ui basic segment">
+                {% block content %}{% endblock %}
             </div>
         </div>
     </div>
-</div>
+{% else %}
+{% endif %}
 {% endblock %}

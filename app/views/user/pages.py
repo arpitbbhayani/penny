@@ -16,8 +16,8 @@ mod = Blueprint('pages', __name__, )
 
 @mod.route('/', methods=["GET"])
 def index():
-    return render_template('index.html')
-
+    next_url = request.args.get('next') or url_for('pages.index')
+    return render_template('index.html', next_url=next_url)
 
 @mod.route('/logout')
 def logout():
@@ -29,17 +29,20 @@ def logout():
 def oauth_authorize(provider):
     if not current_user.is_anonymous:
         return redirect(url_for('pages.index'))
+
+    next_url = request.args.get('next') or url_for('pages.index')
     oauth = OAuthSignIn.get_provider(provider)
-    return oauth.authorize()
+    return oauth.authorize(next_url)
 
 
 @mod.route('/callback/<provider>')
 def oauth_callback(provider):
+    next_url = request.args.get('next') or url_for('pages.index')
     if not current_user.is_anonymous:
         return redirect(url_for('pages.index'))
     oauth = OAuthSignIn.get_provider(provider)
 
-    social_id, fname, lname, email = oauth.callback()
+    social_id, fname, lname, email = oauth.callback(next_url)
 
     if social_id is None:
         flash('Authentication failed.')
@@ -53,4 +56,4 @@ def oauth_callback(provider):
         user.last_login = datetime.datetime.utcnow()
         db.session.commit()
     login_user(user, True)
-    return redirect(url_for('pages.index'))
+    return redirect(next_url)

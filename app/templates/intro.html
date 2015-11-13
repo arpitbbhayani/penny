@@ -2,7 +2,7 @@
     <canvas id="demo-canvas"></canvas>
     <div class="ui middle aligned center aligned grid" id="landing">
         <div class="column">
-            <a class="ui huge teal inverted button" href="{{url_for('pages.oauth_authorize', provider='facebook')}}">
+            <a class="ui huge teal inverted button" href="{{url_for('pages.oauth_authorize', provider='facebook', next=next_url)}}">
                 <i class="facebook icon"></i>
                 Login with Facebook
             </a>

@@ -3,7 +3,7 @@
 {% block body %}
 {% if current_user.is_authenticated %}
     {% include 'boilerplate.html' %}
-    <div class="ui grid">
+    <div class="ui grid" style="padding-top: 65px;">
         <div class="twelve wide column">
             <div class="ui secondary pointing menu">
                 <a class="{%- if request.path == url_for('todos.index') %}active{% endif %} item teal" href="{{url_for('todos.index')}}">

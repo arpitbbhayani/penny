@@ -17,8 +17,9 @@ class OAuthSignIn(object):
     def callback(self):
         pass
 
-    def get_callback_url(self):
-        return 'http://localhost:10101/callback/' + self.provider_name
+    def get_callback_url(self, next_url):
+        return url_for('pages.oauth_callback', provider=self.provider_name,
+                       _external=True, next=next_url)
 
     @classmethod
     def get_provider(self, provider_name):
@@ -42,20 +43,21 @@ class FacebookSignIn(OAuthSignIn):
             base_url='https://graph.facebook.com/'
         )
 
-    def authorize(self):
+    def authorize(self, next_url):
+        print "REDIRECT URL : " + self.get_callback_url(next_url)
         return redirect(self.service.get_authorize_url(
             scope='email',
             response_type='code',
-            redirect_uri=self.get_callback_url())
+            redirect_uri=self.get_callback_url(next_url))
         )
 
-    def callback(self):
+    def callback(self, next_url):
         if 'code' not in request.args:
             return None, None, None, None
         oauth_session = self.service.get_auth_session(
             data={'code': request.args['code'],
                   'grant_type': 'authorization_code',
-                  'redirect_uri': self.get_callback_url()}
+                  'redirect_uri': self.get_callback_url(next_url)}
         )
         me = oauth_session.get('me?fields=id,email,last_name,first_name').json()
         return (
