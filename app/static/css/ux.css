@@ -30,9 +30,7 @@ i.white {
 }
 
 .penny-header h2 {
-    line-height: 60px;
-    margin-left: 20px;
-    margin-right: 20px;
+    text-indent: 7px;
 }
 
 .penny-header a,
