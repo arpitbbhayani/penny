@@ -69,12 +69,12 @@
   height: 17px;
   content: '';
   background: #FFFFFF;
-  border-radius: 0.21428571rem;
+  border-radius: 0.23076923rem;
   -webkit-transition: border 0.1s ease, opacity 0.1s ease, box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease, -webkit-transform 0.1s ease;
-  border: 1px solid #D4D4D5;
+  border: 1px solid #DDDDDD;
 }
 
 /*--------------
@@ -129,7 +129,7 @@
 .ui.checkbox .box:hover::before,
 .ui.checkbox label:hover::before {
   background: #FFFFFF;
-  border-color: rgba(34, 36, 38, 0.35);
+  border-color: #51A7E8;
 }
 .ui.checkbox label:hover,
 .ui.checkbox + label:hover {
@@ -143,7 +143,7 @@
 .ui.checkbox .box:active::before,
 .ui.checkbox label:active::before {
   background: #F9FAFB;
-  border-color: rgba(34, 36, 38, 0.35);
+  border-color: #51A7E8;
 }
 .ui.checkbox .box:active::after,
 .ui.checkbox label:active::after {
@@ -177,7 +177,7 @@
 .ui.checkbox input:checked ~ .box:before,
 .ui.checkbox input:checked ~ label:before {
   background: #FFFFFF;
-  border-color: rgba(34, 36, 38, 0.35);
+  border-color: #51A7E8;
 }
 .ui.checkbox input:checked ~ .box:after,
 .ui.checkbox input:checked ~ label:after {
@@ -192,7 +192,7 @@
 .ui.checkbox input:indeterminate ~ .box:before,
 .ui.checkbox input:indeterminate ~ label:before {
   background: #FFFFFF;
-  border-color: rgba(34, 36, 38, 0.35);
+  border-color: #51A7E8;
 }
 .ui.checkbox input:indeterminate ~ .box:after,
 .ui.checkbox input:indeterminate ~ label:after {
@@ -386,7 +386,7 @@
   top: 0.4rem;
   background-color: rgba(0, 0, 0, 0.05);
   width: 3.5rem;
-  height: 0.21428571rem;
+  height: 0.23076923rem;
   -webkit-transform: none;
       -ms-transform: none;
           transform: none;
@@ -405,7 +405,7 @@
   opacity: 1;
   z-index: 2;
   border: none;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.13) inset;
   width: 1.5rem;
   height: 1.5rem;
   top: -0.25rem;
@@ -512,7 +512,7 @@
   opacity: 1;
   z-index: 2;
   border: none;
-  box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+  box-shadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.13), 0px 0px 0px 1px rgba(0, 0, 0, 0.13) inset;
   width: 1.5rem;
   height: 1.5rem;
   top: 0rem;
@@ -547,7 +547,7 @@
 }
 .ui.toggle.checkbox input:checked ~ .box:before,
 .ui.toggle.checkbox input:checked ~ label:before {
-  background-color: #2185D0 !important;
+  background-color: #80A6CD !important;
 }
 .ui.toggle.checkbox input:checked ~ .box:after,
 .ui.toggle.checkbox input:checked ~ label:after {
@@ -561,7 +561,7 @@
 }
 .ui.toggle.checkbox input:focus:checked ~ .box:before,
 .ui.toggle.checkbox input:focus:checked ~ label:before {
-  background-color: #0d71bb !important;
+  background-color: #5991cb !important;
 }
 
 
