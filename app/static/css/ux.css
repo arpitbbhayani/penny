@@ -49,10 +49,10 @@ i.white {
 
 #msg, #flashes {
     position: fixed;
-    top: 60px;
-    left: 10%;
-    width: 80%;
-    z-index: 10;
+    top: 0px;
+    left: 20%;
+    width: 60%;
+    z-index: 10000;
 }
 
 /*
@@ -83,7 +83,7 @@ i.white {
  }
 
  .main-title {
-     font-family: "Courier New";
+    font-family: "Courier New";
  	font-size: 4.2em;
  }
 

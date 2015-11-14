@@ -1,6 +1,9 @@
-$('#flashes').transition('pulse');
-$('#flashes, #msg').click(function(){
-    $(this).transition('fade out');
+$('#flashes').transition('bounce', {
+    onComplete: function() {
+        setTimeout(function() {
+            $('#flashes').transition('fade out');
+        }, 5000);
+    }
 });
 
 var uiModules = {
@@ -11,8 +14,17 @@ var uiModules = {
      */
 
     notify : function(response) {
-        $('#msg').removeClass('negative positive').addClass('info').html(response).transition('bounce');
-        $('#msggrid').show();
+        $('#msg')
+                .removeClass('negative positive')
+                .addClass('info')
+                .html(response)
+                .transition('bounce', {
+                    onComplete: function() {
+                        setTimeout(function() {
+                            $('#msg').transition('fade out');
+                        }, 5000);
+                    }
+                });
     },
 
     showError : function(response) {
@@ -20,15 +32,16 @@ var uiModules = {
         if (!error) {
             error = response;
         }
-        $('#msg').removeClass('info positive').addClass('negative').html(error).transition('bounce');
-        $('#msggrid').show();
-    },
-
-    showWaiting : function(targetElement) {
-        targetElement.html('<i class="fa fa-spinner fa-spin"></i>');
-    },
-
-    removeWaiting : function(targetElement) {
-        targetElement.html(null);
+        $('#msg')
+                .removeClass('info positive')
+                .addClass('negative')
+                .html(response)
+                .transition('bounce', {
+                    onComplete: function() {
+                        setTimeout(function() {
+                            $('#msg').transition('fade out');
+                        }, 5000);
+                    }
+                });
     }
 };
