@@ -17,4 +17,4 @@ def activity_log():
 @mod.route('/configure')
 @login_required
 def configure():
-    return "Configure"
+    return render_template('user/configure.html')

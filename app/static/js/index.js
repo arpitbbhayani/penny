@@ -2,6 +2,12 @@ var markdown = window.markdownit();
 
 $(document).ready(function() {
 
+    $('.ui.sticky')
+  .sticky({
+    context: '#main-content'
+  })
+;
+
     var $wish = $('#wish');
 
     var todoNotificationArea = $('#todos .notification-area');

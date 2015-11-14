@@ -6,10 +6,6 @@
  * Colors
  */
 
-.perfect-pink {
-    color: rgba(255, 0, 196, 0.74) !important;
-}
-
 body {
     background-color: #FFF;
     word-wrap: break-word;
@@ -27,6 +23,28 @@ i.white {
 .menu .buttons .button {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.toc {
+    background-color: #444C55;
+    z-index: 1;
+    width: 250px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+#main-content {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-width: 0px;
+}
+
+.redBackground {
+    background-color: #E03131;
 }
 
 .ui.fixed.borderless.menu {

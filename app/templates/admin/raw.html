@@ -14,40 +14,46 @@
     <script src="/static/js/lib/jquery.tablesort.min.js"></script>
     <script src="/static/semantic/dist/semantic.min.js"></script>
 
+    <link href='https://fonts.googleapis.com/css?family=Atomic+Age' rel='stylesheet' type='text/css'>
+
     <!-- UX Styling -->
     <link rel="stylesheet" href="/static/css/ux.css">
 
 </head>
 
 <body>
-    <div class="ui fixed borderless menu" style="{% if not current_user.is_authenticated %}background: transparent;{% endif %}">
-        <div class="penny-header item">
-            <span><a href="{{url_for('admin.index')}}" class="header red ui"><h2>Frictionle Admin</h2></a></span>
-        </div>
-        <div class="right item">
-            {% if current_user.is_authenticated %}
-            <div class="ui buttons">
-                <a class="basic button ui orange" href="{{url_for('pages.logout')}}">
-                    Logout
-                    <i class="icon arrow right"></i>
-                </a>
+    <div class="full height">
+        <div class="ui grid">
+            <div class="row">
+                <div class="redBackground toc" style="min-height: 700px;">
+                    <div class="ui fluid vertical inverted red sticky menu" style="left: 0px; top: -8px; width: 250px !important; height: 100% !important;">
+                        <div class="penny-header item">
+                            <span><a href="{{url_for('admin.index')}}" class="header white ui"><h2>Frictionle</h2></a></span>
+                        </div>
+                        <a class="item" href="{{url_for('pages.logout')}}">
+                            <i class="icon arrow right"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <div id="main-content">
+                    <div id="msg" class="ui negative message" style="display: none;"></div>
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                          <div class="ui message info" id="flashes">
+                              <ul>
+                                  {% for message in messages %}
+                                  <li>{{ message }}</li>
+                                  {% endfor %}
+                              </ul>
+                          </div>
+                      {% endif %}
+                    {% endwith %}
+                    {% block body %}{% endblock %}
+                </div>
             </div>
-            {% endif %}
         </div>
     </div>
-    <div id="msg" class="ui negative message" style="display: none;"></div>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="ui message info" id="flashes">
-                <ul>
-                    {% for message in messages %}
-                    <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-    {% endwith %}
-    {% block body %}{% endblock %}
 </body>
 <head>
 {% block head %}{% endblock %}
