@@ -23,7 +23,7 @@
     <div class="ui fixed borderless menu" style="{% if not current_user.is_authenticated %}background: transparent;{% endif %}">
         <div class="penny-header item">
             <img class="ui middle aligned mini image" src="/static/images/logo.png">
-            <span><a href="{{url_for('admin.index')}}" class="header teal ui"><h2>Penny Admin</h2></a></span>
+            <span><a href="{{url_for('admin.index')}}" class="header grey ui"><h2>Penny Admin</h2></a></span>
         </div>
         <div class="right item">
             {% if current_user.is_authenticated %}

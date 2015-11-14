@@ -27,12 +27,12 @@
     <div class="ui fixed borderless menu" style="{% if not current_user.is_authenticated %}background: transparent;{% endif %}">
         <div class="penny-header item">
             <img class="ui middle aligned mini image" src="/static/images/logo.png">
-            <span><a href="{{url_for('pages.index')}}" class="header teal ui"><h2>Penny</h2></a></span>
+            <span><a href="{{url_for('pages.index')}}" class="header grey ui"><h2>Penny</h2></a></span>
         </div>
         <div class="right item">
             {% if current_user.is_authenticated %}
             <div class="ui buttons">
-                <a class="basic button ui blue" href="">
+                <a class="basic button ui blue" href="{{url_for('user.configure')}}">
                     <i class="icon configure"></i>
                     Configure
                 </a>
