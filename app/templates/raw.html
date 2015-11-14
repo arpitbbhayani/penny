@@ -39,11 +39,26 @@
     <div class="full height">
         <div class="ui grid">
             <div class="row">
-                <div class="redBackground toc" style="min-height: 700px;">
-                    <div class="ui fluid vertical inverted red sticky menu" style="left: 0px; top: -8px; width: 250px !important; height: 100% !important;">
+                <div class="toc" style="">
+                    <div class="ui fluid vertical inverted red menu" style="position: fixed; left: 0px; top: 0px; width: 250px !important; height: 100% !important;">
                         <div class="penny-header item">
                             <span><a href="{{url_for('pages.index')}}" class="header white ui"><h2>Frictionle</h2></a></span>
                         </div>
+                        <a class="{%- if request.path == url_for('todos.index') %}active{% endif %} item red" href="{{url_for('todos.index')}}">
+                            Todo
+                        </a>
+                        <a class="{%- if request.path == url_for('reminders.index') %}active{% endif %} item red" href="{{url_for('reminders.index')}}">
+                            Reminder
+                        </a>
+                        <a class="{%- if request.path == url_for('webcomics.index') %}active{% endif %} item red" href="{{url_for('webcomics.index')}}">
+                            Webcomics
+                        </a>
+                        <a class="{%- if request.path == url_for('astros.index') %}active{% endif %} item red" href="{{url_for('astros.index')}}">
+                            Astronomy
+                        </a>
+                        <a class="{%- if request.path == url_for('music.index') %}active{% endif %} item red" href="{{url_for('music.index')}}">
+                            Music
+                        </a>
                         <a class="item" href="{{url_for('user.configure')}}">
                             <i class="icon configure"></i>
                             Configure

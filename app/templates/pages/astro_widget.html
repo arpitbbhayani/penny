@@ -8,10 +8,10 @@
                 {% for astro in astros %}
                 <div id="{{astro.id}}">
                     <div class="ui labeled basic button" tabindex="0">
-                        <div class="ui teal basic label">
+                        <div class="ui red basic label">
                             <i class="refresh icon"></i>{{astro.name}}
                         </div>
-                        <p class="ui basic teal left pointing label">{{astro.links_count}}</p>
+                        <p class="ui basic red left pointing label">{{astro.links_count}}</p>
                     </div>
                     <span class="bold">Last synced on : </span>
                     <label>{{astro.last_sync}}</label>

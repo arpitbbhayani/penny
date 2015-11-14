@@ -9,23 +9,6 @@
     {% include 'boilerplate.html' %}
     <div class="ui grid">
         <div class="sixteen wide column">
-            <div class="ui secondary pointing menu borderless">
-                <a class="{%- if request.path == url_for('todos.index') %}active{% endif %} item teal" href="{{url_for('todos.index')}}">
-                    Todo
-                </a>
-                <a class="{%- if request.path == url_for('reminders.index') %}active{% endif %} item teal" href="{{url_for('reminders.index')}}">
-                    Reminder
-                </a>
-                <a class="{%- if request.path == url_for('webcomics.index') %}active{% endif %} item teal" href="{{url_for('webcomics.index')}}">
-                    Webcomics
-                </a>
-                <a class="{%- if request.path == url_for('astros.index') %}active{% endif %} item teal" href="{{url_for('astros.index')}}">
-                    Astronomy
-                </a>
-                <a class="{%- if request.path == url_for('music.index') %}active{% endif %} item teal" href="{{url_for('music.index')}}">
-                    Music
-                </a>
-            </div>
             <div class="ui basic segment">
                 {% block content %}{% endblock %}
             </div>
