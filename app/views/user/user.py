@@ -17,5 +17,5 @@ def activity_log():
 @mod.route('/configure')
 @login_required
 def configure():
-    g.abc = 'pqr'
+    g.user.get_preferences()
     return render_template('user/configure.html')

@@ -1,6 +1,7 @@
 from flask import Flask
 
 app = Flask(__name__)
+app.config.from_object('app.config')
 
 from app.views.user import pages, todo, reminders, webcomics, astros, music, wishapi
 from app.views.admin import admin, user as adminuser
@@ -25,15 +26,6 @@ app.register_blueprint(adminuser.mod, url_prefix='/admin/user')
 
 from flask.ext.login import LoginManager
 
-app.config['SECRET_KEY'] = config.APP_SECRET
-
-app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
-app.config['OAUTH_CREDENTIALS'] = {
-    'facebook': {
-        'id': config.FACEBOOK_APP_KEY,
-        'secret': config.FACEBOOK_APP_SECRET
-    }
-}
 
 from app.models import User
 

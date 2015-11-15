@@ -2,21 +2,21 @@ import json
 import urlparse
 import requests
 
-from app import config
+import app
 
 
 def get_video_api_url(video_id):
-    return 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=%s&key=%s' % (video_id, config.GOOGLE_SERVER_API_KEY)
+    return 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=%s&key=%s' % (video_id, app.config.GOOGLE_SERVER_API_KEY)
 
 
 def get_channel_api_url(channel_id):
-    return 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=%s&key=%s' % (channel_id, config.GOOGLE_SERVER_API_KEY)
+    return 'https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=%s&key=%s' % (channel_id, app.config.GOOGLE_SERVER_API_KEY)
 
 
 def get_playlist_api_url(playlist_id, next_page_token):
     if next_page_token:
-            return 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&pageToken=%s&maxResults=50&playlistId=%s&key=%s' % (next_page_token, playlist_id, config.GOOGLE_SERVER_API_KEY)
-    return 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=%s&key=%s' % (playlist_id, config.GOOGLE_SERVER_API_KEY)
+            return 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&pageToken=%s&maxResults=50&playlistId=%s&key=%s' % (next_page_token, playlist_id, app.config.GOOGLE_SERVER_API_KEY)
+    return 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=%s&key=%s' % (playlist_id, app.config.GOOGLE_SERVER_API_KEY)
 
 
 def get_video_url(video_id):

@@ -1,6 +1,6 @@
 import time
 
-from app import config
+import app
 from app.utils import readable
 from app.dao.items.astroDao import AstroDao
 
@@ -36,7 +36,7 @@ def sync(astro_id):
 
     if astro_id == 'quarks':
         dao = AstroDao()
-        crawler = QuarksCrawler(config.QUARKS_CRAWLER_URL)
+        crawler = QuarksCrawler(app.config.QUARKS_CRAWLER_URL)
     else:
         raise Exception('Invalid astro id %s' % astro_id)
 

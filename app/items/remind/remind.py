@@ -6,10 +6,9 @@ import datetime
 
 from crontab import CronTab
 
+import app
 from app.items.reminder import Reminder
 from app.dao.reminderDao import ReminderDao
-
-from app import config
 
 EVERYDAY_RE = "every\s*day"
 DATE_RE = "([0-9]+)[-.:/]([0-9]+)([-.:/]([0-9]+))?"
@@ -37,7 +36,7 @@ def process(wish):
     remindObj.id = ret.get('id')
 
     tab = CronTab(user=True)
-    job = tab.new(config.REMIND_COMMAND + ' -m "%s"' % remindObj.message, comment=str(remindObj.id))
+    job = tab.new(app.config.REMIND_COMMAND + ' -m "%s"' % remindObj.message, comment=str(remindObj.id))
     job.setall(cron_str)
     tab.write()
 

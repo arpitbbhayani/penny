@@ -1,6 +1,6 @@
 import time
 
-from app import config
+import app
 from app.utils import readable
 from app.dao.items.webcomicDao import WebcomicDao
 
@@ -36,7 +36,7 @@ def sync(comic_id):
 
     if comic_id == 'xkcd':
         dao = WebcomicDao()
-        crawler = XkcdComic(config.XKCD_CRAWLER_URL)
+        crawler = XkcdComic(app.config.XKCD_CRAWLER_URL)
     else:
         raise Exception('Invalid webcomic id %s' % comic_id)
 

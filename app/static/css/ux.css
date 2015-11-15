@@ -7,7 +7,7 @@
  */
 
 body {
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: #FFF;
     word-wrap: break-word;
     max-height: 100vh;
