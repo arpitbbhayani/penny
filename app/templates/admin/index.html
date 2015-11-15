@@ -1,11 +1,11 @@
 {% extends "admin/raw.html" %}
 
 {% block body %}
-{% if current_user.is_authenticated %}
+{% if g.user.is_authenticated %}
     <div class="ui grid">
         <div class="sixteen wide column">
             <div class="ui secondary pointing menu red">
-                <a class="{%- if request.path == url_for('admin.users') or request.path == url_for('adminuser.user', user_id=current_user.id) %}active{% endif %} item red" href="{{url_for('admin.users')}}">
+                <a class="{%- if request.path == url_for('admin.users') or request.path == url_for('adminuser.user', user_id=g.user.id) %}active{% endif %} item red" href="{{url_for('admin.users')}}">
                     User Management
                 </a>
             </div>

@@ -4,7 +4,7 @@
 <div class="ui grid">
     <div class="ten wide column">
         <h3 class="ui dividing grey header">User Details</h3>
-        <form method="POST" action="{{url_for('adminuser.update', user_id=current_user.id, update='details')}}" class="ui large form">
+        <form method="POST" action="{{url_for('adminuser.update', user_id=g.user.id, update='details')}}" class="ui large form">
             <div class="field">
                 <label>Name</label>
                 <div class="two fields">
@@ -51,7 +51,7 @@
     </div>
     <div class="six wide column">
         <h3 class="ui dividing header grey">Services</h3>
-        <form class="ui form" method="POST" action="{{url_for('adminuser.update', user_id=current_user.id, update='services')}}">
+        <form class="ui form" method="POST" action="{{url_for('adminuser.update', user_id=g.user.id, update='services')}}">
             <div class="field">
                 <div class="ui checkbox">
                     <input type="checkbox" name="example2">

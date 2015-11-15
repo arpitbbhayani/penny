@@ -1,10 +1,9 @@
 import datetime
-from flask import Blueprint, request
-
+from flask import Blueprint, request, g
 from flask import render_template, redirect, flash, url_for
-from flask_restful import reqparse
 
-from flask.ext.login import current_user, login_user, logout_user
+from flask_restful import reqparse
+from flask.ext.login import login_user, logout_user
 
 from app.oauth import OAuthSignIn
 from app.models import User
@@ -14,10 +13,12 @@ from app.db import db
 
 mod = Blueprint('pages', __name__, )
 
+
 @mod.route('/', methods=["GET"])
 def index():
     next_url = request.args.get('next') or url_for('pages.index')
     return render_template('index.html', next_url=next_url)
+
 
 @mod.route('/logout')
 def logout():
@@ -27,7 +28,7 @@ def logout():
 
 @mod.route('/authorize/<provider>')
 def oauth_authorize(provider):
-    if not current_user.is_anonymous:
+    if not g.user.is_anonymous:
         return redirect(url_for('pages.index'))
 
     next_url = request.args.get('next') or url_for('pages.index')
@@ -38,7 +39,7 @@ def oauth_authorize(provider):
 @mod.route('/callback/<provider>')
 def oauth_callback(provider):
     next_url = request.args.get('next') or url_for('pages.index')
-    if not current_user.is_anonymous:
+    if not g.user.is_anonymous:
         return redirect(url_for('pages.index'))
     oauth = OAuthSignIn.get_provider(provider)
 
@@ -55,5 +56,6 @@ def oauth_callback(provider):
     else:
         user.last_login = datetime.datetime.utcnow()
         db.session.commit()
+
     login_user(user, True)
     return redirect(next_url)
