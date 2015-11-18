@@ -18,6 +18,7 @@ class OAuthSignIn(object):
         pass
 
     def get_callback_url(self, next_url):
+        print "Provider name : ", self.provider_name
         return url_for('pages.oauth_callback', provider=self.provider_name,
                        _external=True, next=next_url)
 
@@ -29,6 +30,47 @@ class OAuthSignIn(object):
                 provider = provider_class()
                 self.providers[provider.provider_name] = provider
         return self.providers[provider_name]
+
+
+class SlackSignIn(OAuthSignIn):
+    def __init__(self):
+        super(SlackSignIn, self).__init__('slack')
+        self.service = OAuth2Service(
+            name='slack',
+            client_id=self.consumer_id,
+            client_secret=self.consumer_secret,
+            authorize_url='https://slack.com/oauth/authorize',
+            access_token_url='https://slack.com/api/oauth.access'
+        )
+
+    def authorize(self, next_url):
+        u = self.service.get_authorize_url(
+            scope='chat:write:user channels:write groups:write',
+            response_type='code',
+            redirect_uri=self.get_callback_url(next_url)
+        )
+        print "AUTHORIZED: ", u
+        return redirect(u)
+
+    def callback(self, next_url):
+        if 'code' not in request.args:
+            return None, None, None, None
+        u = self.get_callback_url(next_url)
+
+        print "SERVICE ", self.service
+        print type(self.service)
+        oauth_session = self.service.get_auth_session(
+            data={'code': request.args['code'],
+                  'grant_type': 'authorization_code',
+                  'redirect_uri': self.get_callback_url(next_url)
+            }
+        )
+        print "Oauth session obtained"
+        me = oauth_session.get('https://slack.com/api/oauth.access').json()
+        print "ME ", me
+        return (
+            'a'
+        )
 
 
 class FacebookSignIn(OAuthSignIn):

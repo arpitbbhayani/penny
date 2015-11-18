@@ -33,3 +33,19 @@ GOOGLE_SERVER_API_KEY = 'xxxxxxxxxx'
 # facebook
 FACEBOOK_APP_KEY = 'xxxxxxxxxx'
 FACEBOOK_APP_SECRET = 'xxxxxxxxxx'
+
+# slack
+SLACK_CLIENT_ID = 'xxxxxxxxxx'
+SLACK_CLIENT_SECRET = 'xxxxxxxxxx'
+
+# OAuth
+OAUTH_CREDENTIALS = {
+    'facebook': {
+        'id': FACEBOOK_APP_KEY,
+        'secret': FACEBOOK_APP_SECRET
+    },
+    'slack': {
+        'id': SLACK_CLIENT_ID,
+        'secret': SLACK_CLIENT_SECRET
+    }
+}

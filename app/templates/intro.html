@@ -6,6 +6,10 @@
                 <i class="facebook icon"></i>
                 Login with Facebook
             </a>
+            <a class="ui huge red inverted button" href="{{url_for('pages.oauth_authorize', provider='slack', next=next_url)}}">
+                <i class="facebook icon"></i>
+                Login with Slack
+            </a>
             <!-- <div class="ui inverted secondary pointing menu top">
                 <a class="active item" data-tab="signin"><h3>Sign In</h3></a>
                 <a class="item" data-tab="signup"><h3>Sign Up</h3></a>

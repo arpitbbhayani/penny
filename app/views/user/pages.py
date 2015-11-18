@@ -43,6 +43,7 @@ def oauth_callback(provider):
         return redirect(url_for('pages.index'))
     oauth = OAuthSignIn.get_provider(provider)
 
+    print "Calling oauth callback with next_url = %s" % next_url
     social_id, fname, lname, email = oauth.callback(next_url)
 
     if social_id is None:
