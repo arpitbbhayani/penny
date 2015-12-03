@@ -1,6 +1,6 @@
 # Penny - The Martian
 
-This is under development. First verision will be released soon
+This is under development. Please refrain from using it.
 
 I am `Penny`. The ultimate aim of my life is to serve the Earthians. You can ask for anything you want and I will try my best to fullfil your wishes.
 
